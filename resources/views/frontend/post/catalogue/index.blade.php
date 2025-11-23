@@ -4,11 +4,11 @@
         $catalogueName = $postCatalogue->languages->first()->pivot->name ?? $postCatalogue->name ?? '';
         $catalogueDescription = $postCatalogue->languages->first()->pivot->description ?? $postCatalogue->description ?? '';
     @endphp
+    @include('frontend.component.breadcrumb', [
+        'model' => $postCatalogue,
+        'breadcrumb' => $breadcrumb ?? [],
+    ])
     <div class="post-catalogue-page page-setup">
-        @include('frontend.component.breadcrumb', [
-            'model' => $postCatalogue,
-            'breadcrumb' => $breadcrumb ?? [],
-        ])
         <div class="uk-container uk-container-center">
             {{-- Header --}}
             <div class="catalogue-header">

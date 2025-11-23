@@ -3,11 +3,11 @@
 @php
     $breadcrumbImage = !empty($postCatalogue->album) ? json_decode($postCatalogue->album, true)[0] : asset('userfiles/image/system/breadcrumb.png');
 @endphp
+@include('frontend.component.breadcrumb', [
+    'model' => $post,
+    'breadcrumb' => $breadcrumb,
+])
 <div class="post-detail">
-    @include('frontend.component.breadcrumb', [
-        'model' => $post,
-        'breadcrumb' => $breadcrumb,
-    ])
     <div class="product-catalogue-wrapper post-container">
         <div class="uk-container uk-container-center">
             <div class="uk-grid uk-grid-medium">
