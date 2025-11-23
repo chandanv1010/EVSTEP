@@ -225,12 +225,10 @@
                         <div class="related-grid">
                             @foreach($productRelated as $relatedProduct)
                                 @php
-                                    $relatedLanguage = ($relatedProduct->languages instanceof \Illuminate\Support\Collection) 
-                                        ? $relatedProduct->languages->first() 
-                                        : (is_array($relatedProduct->languages) ? (object)($relatedProduct->languages[0] ?? []) : ($relatedProduct->languages ?? (object)[]));
-                                    $relatedName = $relatedLanguage->name ?? '';
-                                    $relatedDescription = $relatedLanguage->description ?? '';
-                                    $relatedCanonical = write_url($relatedLanguage->canonical ?? '');
+                                    $relatedLanguage = $relatedProduct->languages->first();
+                                    $relatedName = $relatedLanguage->pivot->name ?? '';
+                                    $relatedDescription = $relatedLanguage->pivot->description ?? '';
+                                    $relatedCanonical = write_url($relatedLanguage->pivot->canonical ?? '');
                                     $relatedPrice = number_format($relatedProduct->price ?? 0, 0, ',', '.');
                                     $relatedImage = $relatedProduct->image ?? '';
                                 @endphp

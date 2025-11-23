@@ -162,7 +162,7 @@ class ProductController extends FrontendController
             ]
         ];
 
-        $productRelated = $this->productRepository->getRelated(6, $product->product_catalogue_id, $product->id);
+        $productRelated = $this->productRepository->getRelated(6, $product->product_catalogue_id, $product->id, $this->language);
 
 
         Cart::instance('seen')->add($productSeen);
