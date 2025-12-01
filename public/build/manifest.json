@@ -27,17 +27,13 @@
     "file": "assets/Vector-de822e92.png",
     "src": "public/frontend/resources/img/Vector.png"
   },
-  "public/frontend/resources/img/form-bg.jpg": {
-    "file": "assets/form-bg-61c490c8.jpg",
-    "src": "public/frontend/resources/img/form-bg.jpg"
-  },
   "resources/css/app.scss": {
-    "file": "assets/app-6cb4f08a.css",
+    "file": "assets/app-46b86109.css",
     "isEntry": true,
     "src": "resources/css/app.scss"
   },
   "resources/js/app.js": {
-    "file": "assets/app-f0c02460.js",
+    "file": "assets/app-e1786f68.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
