@@ -1159,27 +1159,40 @@
     }
 
     HT.vstepRegister = () => {
-        $('#vstep-register-form').on('submit', function(e){
+        $('#vstep-register-form, #vstep-register-form-new').on('submit', function(e){
             e.preventDefault()
             let _this = $(this)
+            let formId = _this.attr('id')
+            let isNewForm = formId === 'vstep-register-form-new'
+            
             let name = _this.find('input[name="name"]').val()
-            let email = _this.find('input[name="email"]').val()
             let phone = _this.find('input[name="phone"]').val()
-            let level = _this.find('select[name="level"]').val()
+            let message = _this.find('textarea[name="message"]').val() || ''
+            let email = _this.find('input[name="email"]').val() || ''
+            let level = _this.find('select[name="level"]').val() || ''
+            
             let messageEl = _this.find('#form-message')
-            let submitBtn = _this.find('.btn-submit')
+            let submitBtn = isNewForm ? _this.find('.btn-submit-new') : _this.find('.btn-submit')
             
-            // Validation
-            if (!name || !email || !phone || !level) {
-                messageEl.removeClass('success').addClass('error').text('Vui lòng điền đầy đủ thông tin').show()
-                return false
-            }
-            
-            // Email validation
-            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-            if (!emailRegex.test(email)) {
-                messageEl.removeClass('success').addClass('error').text('Email không hợp lệ').show()
-                return false
+            // Validation for new form
+            if (isNewForm) {
+                if (!name || !phone) {
+                    messageEl.removeClass('success').addClass('error').text('Vui lòng điền đầy đủ thông tin').show()
+                    return false
+                }
+            } else {
+                // Validation for old form
+                if (!name || !email || !phone || !level) {
+                    messageEl.removeClass('success').addClass('error').text('Vui lòng điền đầy đủ thông tin').show()
+                    return false
+                }
+                
+                // Email validation
+                let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                if (!emailRegex.test(email)) {
+                    messageEl.removeClass('success').addClass('error').text('Email không hợp lệ').show()
+                    return false
+                }
             }
             
             // Phone validation
@@ -1190,10 +1203,13 @@
             
             let option = {
                 'name': name,
-                'email': email,
                 'phone': phone,
-                'message': 'Trình độ hiện tại: ' + level,
+                'message': isNewForm ? message : ('Trình độ hiện tại: ' + level),
                 '_token': _token
+            }
+            
+            if (!isNewForm && email) {
+                option['email'] = email
             }
             
             $.ajax({
@@ -1215,7 +1231,7 @@
                     } else {
                         messageEl.removeClass('success').addClass('error').text(res.messages || 'Có lỗi xảy ra. Vui lòng thử lại.').show()
                     }
-                    submitBtn.text('ĐĂNG KÝ').attr('disabled', false)
+                    submitBtn.text(isNewForm ? 'ĐĂNG KÝ NGAY' : 'ĐĂNG KÝ').attr('disabled', false)
                 },
                 error: function(xhr) {
                     let errorMsg = 'Có lỗi xảy ra. Vui lòng thử lại.'
@@ -1227,7 +1243,7 @@
                         }
                     }
                     messageEl.removeClass('success').addClass('error').text(errorMsg).show()
-                    submitBtn.text('ĐĂNG KÝ').attr('disabled', false)
+                    submitBtn.text(isNewForm ? 'ĐĂNG KÝ NGAY' : 'ĐĂNG KÝ').attr('disabled', false)
                 }
             })
         })

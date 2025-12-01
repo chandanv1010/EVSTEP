@@ -27,7 +27,7 @@
                     {{-- Left: VSTEP Details --}}
                     <div class="uk-width-medium-1-2">
                         <div class="vstep-content wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.4s">
-                            {!! $postContent !!}
+                            {!! $postContent !!} 
                         </div>
                     </div>
                     
@@ -35,6 +35,30 @@
                     <div class="uk-width-medium-1-2">
                         <div class="vstep-certificate wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.4s">
                             <img src="{{ $image }}" alt="VSTEP Certificate Template" class="certificate-image">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="vstep-statistics">
+                    <div class="uk-grid uk-grid-medium" data-uk-grid-match="">
+                        <div class="uk-width-medium-1-2">
+                            <div class="stat-box stat-box-a">
+                                <div class="stat-header">Bậc A1 - A2</div>
+                                
+                                <div class="stat-value">31%</div>
+                                
+                                <div class="stat-description">Sinh vi&ecirc;n đăng k&yacute; để đủ điều kiện tốt nghiệp.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="uk-width-medium-1-2">
+                            <div class="stat-box stat-box-b">
+                                <div class="stat-header">Bậc B1 - B2</div>
+                                    
+                                <div class="stat-value">69%</div>
+                                
+                                <div class="stat-description">Gi&aacute;o vi&ecirc;n, c&ocirc;ng chức, nghi&ecirc;n cứu sinh v&agrave; nh&acirc;n sự doanh nghiệp.</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -254,17 +278,15 @@
             $button2Link = $ctaData['button_2_link'] ?? '#';
         @endphp
         <div class="panel-vstep-cta page-setup">
-            <div class="uk-container uk-container-center">
-                <div class="cta-card wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                    <h2 class="cta-title">
-                        <span class="cta-title-line1 wow fadeInDown" data-wow-duration="0.6s" data-wow-delay="0.3s">{{ $title }}</span>
-                        <span class="cta-title-line2 wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.4s">{{ $titleHighlight }}</span>
-                    </h2>
-                    <p class="cta-subtitle wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.5s">{{ $subtitle }}</p>
-                    <div class="cta-buttons">
-                        <a href="#" class="btn btn-consult open-register-popup wow fadeInLeft" data-wow-duration="0.6s" data-wow-delay="0.6s">{{ $button1Text }}</a>
-                        <a href="{{ $button2Link }}" class="btn btn-buy wow fadeInRight" data-wow-duration="0.6s" data-wow-delay="0.6s">{{ $button2Text }}</a>
-                    </div>
+            <div class="cta-card wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                <h2 class="cta-title">
+                    <span class="cta-title-line1 wow fadeInDown" data-wow-duration="0.6s" data-wow-delay="0.3s">{{ $title }}</span>
+                    <span class="cta-title-line2 wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.4s">{{ $titleHighlight }}</span>
+                </h2>
+                <p class="cta-subtitle wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.5s">{{ $subtitle }}</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-consult open-register-popup wow fadeInLeft" data-wow-duration="0.6s" data-wow-delay="0.6s">{{ $button1Text }}</a>
+                    <a href="{{ $button2Link }}" class="btn btn-buy wow fadeInRight" data-wow-duration="0.6s" data-wow-delay="0.6s">{{ $button2Text }}</a>
                 </div>
             </div>
         </div>
@@ -272,93 +294,27 @@
     
     {{-- VSTEP Registration Form Section --}}
     <div class="panel-vstep-register page-setup">
-        {{-- <div class="register-background">
-            <img src="{{ asset('frontend/resources/img/form-bg.png') }}" alt="Background">
-        </div> --}}
         <div class="uk-container uk-container-center">
+            <h2 class="promo-title"> bắt đầu chinh phục VSTEP ngay hôm nay</h2>
             <div class="uk-grid uk-grid-medium" data-uk-grid-match>
-                {{-- Left: Content --}}
+                {{-- Left: Promotional Content --}}
                 <div class="uk-width-medium-1-2">
-                    <div class="register-content wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                        <div class="register-logo wow fadeInDown" data-wow-duration="0.6s" data-wow-delay="0.3s">
-                            @if(isset($system['homepage_logo']) && $system['homepage_logo'])
-                                <img src="{{ $system['homepage_logo'] }}" alt="{{ $system['homepage_company'] ?? 'VSTEP' }}">
-                            @else
-                                <div class="logo-placeholder">VSTEP</div>
-                            @endif
+                    <div class="register-promo wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                       
+                        <div class="promo-graphic">
+                           <img src="{{ asset('frontend/resources/img/form-bg.png') }}" alt="Promo Graphic">
                         </div>
-                        <h2 class="register-title wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.4s">
-                            <span class="title-line1">Ôn luyện VSTEP</span>
-                            <span class="title-line2">ngay hôm nay</span>
-                        </h2>
-                        <div class="register-features">
-                            <div class="feature-item wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.5s">
-                                <div class="feature-icon">
-                                    <i class="fa fa-home"></i>
-                                </div>
-                                <span class="feature-text">Học Online Linh Hoạt</span>
-                            </div>
-                            <div class="feature-item wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.6s">
-                                <div class="feature-icon">
-                                    <i class="fa fa-money"></i>
-                                </div>
-                                <span class="feature-text">Chi Phí Hợp Lý</span>
-                            </div>
-                            <div class="feature-item wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.7s">
-                                <div class="feature-icon">
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                                <span class="feature-text">Tiết Kiệm Thời Gian</span>
-                            </div>
-                            <div class="feature-item wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.8s">
-                                <div class="feature-icon">
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <span class="feature-text">Giáo Viên Chuyên Gia</span>
-                            </div>
+                        <div class="promo-text">
+                            <p>Hơn 10000 hv đã thành công lấy chứng chỉ tiếng anh A2 B1 B2</p>
+                            <p>cấp tốc để phục vụ cho học tập, công việc.</p>
+                            <p class="promo-question">Bạn có muốn trở thành người tiếp theo?</p>
                         </div>
                     </div>
                 </div>
                 
-                {{-- Right: Form --}}
+                {{-- Right: Registration Form --}}
                 <div class="uk-width-medium-1-2">
-                    <div class="register-form-wrapper wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                        <div class="register-book wow fadeIn" data-wow-duration="0.6s" data-wow-delay="0.6s">
-                            <img src="{{ asset('frontend/resources/img/book.png') }}" alt="Book">
-                        </div>
-                        <form class="register-form wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.7s" id="vstep-register-form">
-                            <h3 class="form-title">Đăng ký ngay</h3>
-                            <p class="form-subtitle">Tư vấn miễn phí</p>
-                            
-                            <div class="form-group">
-                                <input type="text" name="name" class="form-control" placeholder="Họ và tên" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-control" placeholder="Email" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <select name="level" class="form-control" required>
-                                    <option value="">Chọn trình độ</option>
-                                    <option value="A1">A1 - Cơ bản</option>
-                                    <option value="A2">A2 - Sơ cấp</option>
-                                    <option value="B1">B1 - Trung cấp</option>
-                                    <option value="B2">B2 - Trung cao cấp</option>
-                                    <option value="C1">C1 - Cao cấp</option>
-                                    <option value="C2">C2 - Thành thạo</option>
-                                </select>
-                            </div>
-                            
-                            <button type="submit" class="btn-submit">ĐĂNG KÝ</button>
-                            
-                            <div class="form-message" id="form-message"></div>
-                        </form>
-                    </div>
+                    @include('frontend.component.register-form')
                 </div>
             </div>
         </div>

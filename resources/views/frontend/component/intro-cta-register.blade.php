@@ -37,78 +37,29 @@
     <div class="panel-vstep-register page-setup">
         <div class="uk-container uk-container-center">
             <div class="uk-grid uk-grid-medium" data-uk-grid-match>
-                {{-- Left: Content --}}
+                {{-- Left: Promotional Content --}}
                 <div class="uk-width-medium-1-2">
-                    <div class="register-content wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                        <div class="register-logo wow fadeInDown" data-wow-duration="0.6s" data-wow-delay="0.3s">
-                            @if(isset($system['homepage_logo']) && $system['homepage_logo'])
-                                <img src="{{ $system['homepage_logo'] }}" alt="{{ $system['homepage_company'] ?? 'VSTEP' }}">
-                            @else
-                                <div class="logo-placeholder">VSTEP</div>
-                            @endif
+                    <div class="register-promo wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                        <h2 class="promo-title">THẦN TỐC CHINH PHỤC MỌI MỤC TIÊU TIẾNG ANH</h2>
+                        <div class="promo-graphic">
+                            <div class="vstep-logo-circle">
+                                <span>VSTEP</span>
+                            </div>
+                            <div class="promo-banner">
+                                <span>CAM KẾT ĐẦU RA</span>
+                            </div>
                         </div>
-                        <h2 class="register-title wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.4s">
-                            <span class="title-line1">{{ $registerTitle1 }}</span>
-                            <span class="title-line2">{{ $registerTitle2 }}</span>
-                        </h2>
-                        <div class="register-features">
-                            @php
-                                $features = [
-                                    ['icon' => 'fa-home', 'text' => 'Học Online Linh Hoạt'],
-                                    ['icon' => 'fa-money', 'text' => 'Chi Phí Hợp Lý'],
-                                    ['icon' => 'fa-clock-o', 'text' => 'Tiết Kiệm Thời Gian'],
-                                    ['icon' => 'fa-star', 'text' => 'Giáo Viên Chuyên Gia']
-                                ];
-                            @endphp
-                            @foreach($features as $key => $feature)
-                                <div class="feature-item wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="{{ 0.5 + ($key * 0.1) }}s">
-                                    <div class="feature-icon">
-                                        <i class="fa {{ $feature['icon'] }}"></i>
-                                    </div>
-                                    <span class="feature-text">{{ $feature['text'] }}</span>
-                                </div>
-                            @endforeach
+                        <div class="promo-text">
+                            <p>Hơn 10000 hv đã thành công lấy chứng chỉ tiếng anh A2 B1 B2</p>
+                            <p>cấp tốc để phục vụ cho học tập, công việc.</p>
+                            <p class="promo-question">Bạn có muốn trở thành người tiếp theo?</p>
                         </div>
                     </div>
                 </div>
                 
-                {{-- Right: Form --}}
+                {{-- Right: Registration Form --}}
                 <div class="uk-width-medium-1-2">
-                    <div class="register-form-wrapper wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.3s">
-                        <div class="register-book wow fadeIn" data-wow-duration="0.6s" data-wow-delay="0.6s">
-                            <img src="{{ asset('frontend/resources/img/book.png') }}" alt="Book">
-                        </div>
-                        <form class="register-form wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.7s" id="vstep-register-form">
-                            <h3 class="form-title">{{ $formTitle }}</h3>
-                            <p class="form-subtitle">{{ $formSubtitle }}</p>
-                            
-                            <div class="form-group">
-                                <input type="text" name="name" class="form-control" placeholder="Họ và tên" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-control" placeholder="Email" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <select name="level" class="form-control" required>
-                                    <option value="">Chọn trình độ</option>
-                                    <option value="A1">A1 - Cơ bản</option>
-                                    <option value="A2">A2 - Sơ cấp</option>
-                                    <option value="B1">B1 - Trung cấp</option>
-                                    <option value="B2">B2 - Trung cao cấp</option>
-                                    <option value="C1">C1 - Cao cấp</option>
-                                    <option value="C2">C2 - Thành thạo</option>
-                                </select>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-submit">ĐĂNG KÝ</button>
-                        </form>
-                    </div>
+                    @include('frontend.component.register-form')
                 </div>
             </div>
         </div>
