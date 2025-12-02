@@ -2,19 +2,86 @@
 @section('content')
 
 <div class="panel-lecturer-list page-setup">
+    {{-- Header Section - Full Width, No Container --}}
+    <div class="lecturer-list-header">
+        <div class="uk-container uk-container-center">
+            <div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid-match>
+                <div class="uk-width-medium-2-3">
+                    <div class="lecturer-header-content wow fadeInLeft" data-wow-duration="0.8s">
+                        <h1 class="lecturer-title">
+                            <span class="title-main">Đội ngũ giáo viên</span>
+                            <span class="title-sub">tại VSTEP</span>
+                        </h1>
+                        <ul class="lecturer-intro-list">
+                            <li>{{ $system['lecturer_intro_text_1'] ?? 'Là những giáo viên nhiều năm kinh nghiệm giảng dạy VSTEP, giỏi kiến thức và yêu nghề.' }}</li>
+                            <li>{{ $system['lecturer_intro_text_2'] ?? 'Các cô đi dạy vì cái tâm và khát khao giúp học viên cải thiện tiếng Anh và đạt mục tiêu B1, B2 VSTEP.' }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="uk-width-medium-1-3">
+                    <div class="lecturer-header-image wow fadeInRight" data-wow-duration="0.8s">
+                        <div class="lecturer-featured-image">
+                            @if(!empty($system['lecturer_featured_image']))
+                                <img src="{{ $system['lecturer_featured_image'] }}" alt="Giảng viên VSTEP EASY">
+                            @else
+                                <img src="{{ asset('frontend/resources/img/default-lecturer-featured.jpg') }}" alt="Giảng viên VSTEP EASY" onerror="this.onerror=null; this.parentNode.innerHTML='<div class=\'featured-placeholder\'><span>V</span></div>'">
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="uk-container uk-container-center">
-        {{-- Header Section --}}
-        <div class="lecturer-list-header">
-            <div class="lecturer-label wow fadeInDown" data-wow-duration="0.6s" data-wow-delay="0.1s">ĐỘI NGŨ</div>
-            <h1 class="lecturer-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">Giảng Viên</h1>
-            <p class="lecturer-subtitle wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.3s">
-                Đội ngũ giảng viên giàu kinh nghiệm, tận tâm và nhiệt huyết
-            </p>
+        {{-- Features Section --}}
+        <div class="lecturer-features-section wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+            <div class="uk-grid uk-grid-medium" data-uk-grid-match>
+                {{-- Feature 1 --}}
+                <div class="uk-width-medium-1-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fa fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="feature-title">{{ $system['lecturer_feature_1_title'] ?? 'Kỹ năng chuyên môn tốt' }}</h3>
+                        <p class="feature-content">{{ $system['lecturer_feature_1_content'] ?? 'Đội ngũ giảng dạy của VSTEP EASY đều có nhiều năm kinh nghiệm, là Thạc sĩ, giảng viên đại học và có điểm 8.0 IELTS hoặc C1 VSTEP trở lên, kỹ năng sư phạm tốt và tổ chức lớp học. Tất cả giáo viên đều được training kỹ càng trước khi giảng dạy, vậy nên bạn có thể yên tâm về chất lượng giảng dạy đồng đều 100%.' }}</p>
+                    </div>
+                </div>
+
+                {{-- Feature 2 --}}
+                <div class="uk-width-medium-1-3">
+                    <div class="feature-card">
+                        <div class="feature-icon icon-students">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <h3 class="feature-title">{{ $system['lecturer_feature_2_title'] ?? 'Đặt học viên làm trung tâm' }}</h3>
+                        <p class="feature-content">{{ $system['lecturer_feature_2_content'] ?? 'Với mục tiêu không để ai bị bỏ lại phía sau, cố vấn học thuật và giáo viên VSTEP EASY thường xuyên họp tiến độ, đánh giá năng lực của TỪNG HỌC VIÊN. Đảm bảo tất cả học viên đều nhận được feedback, được chỉ ra điểm yếu và được giúp đỡ tận tâm để khắc phục. Đội ngũ VSTEP EASY luôn sẵn sàng hỗ trợ học viên 24/7 chứ không chỉ trong giờ học.' }}</p>
+                    </div>
+                </div>
+
+                {{-- Feature 3 --}}
+                <div class="uk-width-medium-1-3">
+                    <div class="feature-card">
+                        <div class="feature-icon icon-quality">
+                            <i class="fa fa-medal"></i>
+                        </div>
+                        <h3 class="feature-title">{{ $system['lecturer_feature_3_title'] ?? 'Lớp học 4-1 ưu tiên chất lượng' }}</h3>
+                        <p class="feature-content">{{ $system['lecturer_feature_3_content'] ?? 'Tại VSTEP EASY, mỗi học viên sẽ được hỗ trợ bởi đội ngũ 4 giáo viên bao gồm 1 giáo viên chính, 1 giáo viên học thuật và 2 giám khảo chấm chữa để theo dõi tiến độ, đánh giá năng lực của TỪNG HỌC VIÊN. VSTEP EASY còn hỗ trợ chấm chữa Nói Viết 1-1 miễn phí ngoài giờ học chính. Tất cả các lớp tại VSTEP EASY đều giới hạn sĩ số để tập trung vào chất lượng chứ không chạy theo số lượng.' }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         {{-- Lecturers Grid --}}
         @if(!empty($allLecturers) && count($allLecturers) > 0)
             <div class="lecturers-grid">
+                {{-- Grid Header --}}
+                <div class="lecturers-grid-header wow fadeInUp" data-wow-duration="0.8s">
+                    <h2 class="grid-title">{{ $system['lecturer_grid_title'] ?? 'Đội ngũ giáo viên' }}</h2>
+                    <p class="grid-description">{{ $system['lecturer_grid_description'] ?? 'Điều kiện tiên quyết để gia nhập đội ngũ chuyên môn VSTEP EASY là có 8.0 IELTS hoặc C1 VSTEP trở lên, kỹ năng sư phạm tốt và tổ chức lớp học. Tất cả giáo viên đều được training kỹ càng trước khi giảng dạy, vậy nên bạn có thể yên tâm về chất lượng giảng dạy đồng đều 100% khi học tại trung tâm.' }}</p>
+                </div>
+
+                {{-- Grid Cards --}}
                 <div class="uk-grid uk-grid-medium uk-grid-match" data-uk-grid-match>
                     @foreach($allLecturers as $index => $lecturer)
                         <div class="uk-width-large-1-4 uk-width-medium-1-3 uk-width-small-1-2">
@@ -86,246 +153,6 @@
         @endif
     </div>
 </div>
-
-<style>
-/* Lecturer List Styles */
-.panel-lecturer-list {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
-}
-
-.lecturer-list-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.lecturer-label {
-    font-size: 14px;
-    font-weight: 700;
-    color: #E85923;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-}
-
-.lecturer-title {
-    font-size: 42px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-.lecturer-subtitle {
-    font-size: 18px;
-    color: #666;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* Lecturer Card */
-.lecturer-card {
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    height: 100%;
-    margin-bottom: 40px;
-}
-
-.lecturer-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 40px rgba(232, 89, 35, 0.2);
-}
-
-.lecturer-card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-.lecturer-image-wrapper {
-    position: relative;
-    overflow: hidden;
-    height: 320px;
-    background: #f5f5f5;
-}
-
-.lecturer-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.lecturer-card:hover .lecturer-image {
-    transform: scale(1.1);
-}
-
-.lecturer-image-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #E85923 0%, #ff7043 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.5s ease;
-}
-
-.lecturer-card:hover .lecturer-image-placeholder {
-    transform: scale(1.05);
-}
-
-.lecturer-initials {
-    font-size: 80px;
-    font-weight: 700;
-    color: #fff;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.lecturer-badge {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(232, 89, 35, 0.95);
-    color: #fff;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.lecturer-info {
-    padding: 25px;
-}
-
-.lecturer-name {
-    font-size: 22px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 8px;
-    line-height: 1.3;
-}
-
-.lecturer-position {
-    font-size: 15px;
-    color: #E85923;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.lecturer-detail,
-.lecturer-degree {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: #555;
-    line-height: 1.6;
-}
-
-.lecturer-detail i,
-.lecturer-degree i {
-    color: #E85923;
-    margin-top: 3px;
-    flex-shrink: 0;
-}
-
-.lecturer-view-more {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #E85923;
-    font-weight: 600;
-    font-size: 14px;
-    margin-top: 20px;
-    transition: gap 0.3s ease;
-}
-
-.lecturer-card:hover .lecturer-view-more {
-    gap: 12px;
-}
-
-.lecturer-empty {
-    text-align: center;
-    padding: 80px 20px;
-    color: #999;
-}
-
-.lecturer-empty i {
-    font-size: 64px;
-    margin-bottom: 20px;
-    color: #ddd;
-}
-
-.lecturer-empty p {
-    font-size: 18px;
-    color: #999;
-}
-
-/* Responsive */
-@media (max-width: 1199px) {
-    .uk-width-large-1-4 {
-        width: 33.333% !important;
-    }
-}
-
-@media (max-width: 959px) {
-    .lecturer-title {
-        font-size: 36px;
-    }
-    
-    .lecturer-image-wrapper {
-        height: 280px;
-    }
-    
-    .lecturer-initials {
-        font-size: 70px;
-    }
-    
-    .uk-width-large-1-4,
-    .uk-width-medium-1-3 {
-        width: 50% !important;
-    }
-}
-
-@media (max-width: 767px) {
-    .panel-lecturer-list {
-        padding: 60px 0;
-    }
-    
-    .lecturer-list-header {
-        margin-bottom: 40px;
-    }
-    
-    .lecturer-title {
-        font-size: 32px;
-    }
-    
-    .lecturer-subtitle {
-        font-size: 16px;
-    }
-    
-    .lecturer-image-wrapper {
-        height: 250px;
-    }
-    
-    .lecturer-initials {
-        font-size: 60px;
-    }
-    
-    .uk-width-large-1-4,
-    .uk-width-medium-1-3,
-    .uk-width-small-1-2 {
-        width: 100% !important;
-    }
-}
-</style>
 
 @endsection
 

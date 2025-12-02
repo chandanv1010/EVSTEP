@@ -178,6 +178,24 @@ class System{
                 '4' => ['type' => 'images', 'label' => 'QR code'],
             ]
         ];
+
+        $data['lecturer'] = [
+            'label' => 'Cấu hình Giảng viên',
+            'description' => 'Cấu hình ảnh và nội dung hiển thị trên trang danh sách giảng viên',
+            'value' => [
+                'featured_image' => ['type' => 'images', 'label' => 'Ảnh giảng viên nổi bật', 'title' => 'Click để tải ảnh giảng viên'],
+                'intro_text_1' => ['type' => 'textarea', 'label' => 'Giới thiệu dòng 1'],
+                'intro_text_2' => ['type' => 'textarea', 'label' => 'Giới thiệu dòng 2'],
+                'feature_1_title' => ['type' => 'text', 'label' => 'Tính năng 1 - Tiêu đề'],
+                'feature_1_content' => ['type' => 'textarea', 'label' => 'Tính năng 1 - Nội dung'],
+                'feature_2_title' => ['type' => 'text', 'label' => 'Tính năng 2 - Tiêu đề'],
+                'feature_2_content' => ['type' => 'textarea', 'label' => 'Tính năng 2 - Nội dung'],
+                'feature_3_title' => ['type' => 'text', 'label' => 'Tính năng 3 - Tiêu đề'],
+                'feature_3_content' => ['type' => 'textarea', 'label' => 'Tính năng 3 - Nội dung'],
+                'grid_title' => ['type' => 'text', 'label' => 'Tiêu đề danh sách giảng viên'],
+                'grid_description' => ['type' => 'textarea', 'label' => 'Mô tả danh sách giảng viên'],
+            ]
+        ];
        
         return $data;
     }

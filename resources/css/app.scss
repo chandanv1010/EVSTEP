@@ -8295,3 +8295,504 @@ input[type="button"],
         gap: 8px;
     }
 }
+
+/* ============================================
+   Lecturer List Styles
+   ============================================ */
+.panel-lecturer-list {
+    padding: 0 0 80px 0;
+    background: #fff;
+}
+
+.lecturer-list-header {
+    background: #FFE5D1;
+    padding: 80px 0 120px 0;
+    margin-bottom: 0;
+    position: relative;
+}
+
+/* Lecturer Features Section */
+.lecturer-features-section {
+    margin-top: -80px;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 10;
+}
+
+.feature-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 35px 25px;
+    height: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-icon i {
+    font-size: 36px;
+    color: #2196F3;
+}
+
+.feature-icon.icon-students {
+    background: linear-gradient(135deg, #FCE4EC 0%, #F8BBD0 100%);
+}
+
+.feature-icon.icon-students i {
+    color: #E91E63;
+}
+
+.feature-icon.icon-quality {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+}
+
+.feature-icon.icon-quality i {
+    color: #2196F3;
+}
+
+.feature-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.feature-content {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+    text-align: left;
+}
+
+.lecturer-header-content {
+    padding: 20px 0;
+}
+
+.lecturer-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 30px;
+    line-height: 1.3;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.title-main {
+    display: block;
+    color: #000;
+}
+
+.title-underline {
+    display: block;
+    width: 200px;
+    height: 6px;
+    background: linear-gradient(90deg, #64B5F6 0%, transparent 100%);
+    border-radius: 3px;
+    margin: 5px 0;
+}
+
+.title-sub {
+    display: block;
+    color: #000;
+}
+
+.lecturer-intro-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lecturer-intro-list li {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.lecturer-intro-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #2196F3;
+    font-size: 24px;
+    line-height: 1;
+    top: 0;
+}
+
+.lecturer-header-image {
+    position: relative;
+    padding: 20px;
+}
+
+.lecturer-decorative-elements {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1;
+}
+
+.decor-v {
+    font-size: 32px;
+    font-weight: 700;
+    color: #64B5F6;
+    opacity: 0.4;
+    transform: rotate(-15deg);
+    line-height: 1;
+}
+
+.lecturer-featured-image {
+    position: relative;
+    margin: 40px auto 0;
+    z-index: 2;
+}
+
+.lecturer-featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.featured-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #E85923 0%, #ff7043 100%);
+    border: 6px solid #64B5F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.featured-placeholder span {
+    font-size: 100px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Lecturers Grid Header */
+.lecturers-grid-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+
+.grid-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.grid-description {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+}
+
+/* Lecturer Card */
+.lecturer-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+    margin-bottom: 40px;
+}
+
+.lecturer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 40px rgba(232, 89, 35, 0.2);
+}
+
+.lecturer-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.lecturer-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 320px;
+    background: #f5f5f5;
+}
+
+.lecturer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.lecturer-card:hover .lecturer-image {
+    transform: scale(1.1);
+}
+
+.lecturer-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #E85923 0%, #ff7043 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s ease;
+}
+
+.lecturer-card:hover .lecturer-image-placeholder {
+    transform: scale(1.05);
+}
+
+.lecturer-initials {
+    font-size: 80px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.lecturer-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(232, 89, 35, 0.95);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lecturer-info {
+    padding: 25px;
+}
+
+.lecturer-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.lecturer-position {
+    font-size: 15px;
+    color: #E85923;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.lecturer-detail,
+.lecturer-degree {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.lecturer-detail i,
+.lecturer-degree i {
+    color: #E85923;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.lecturer-view-more {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #E85923;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 20px;
+    transition: gap 0.3s ease;
+}
+
+.lecturer-card:hover .lecturer-view-more {
+    gap: 12px;
+}
+
+.lecturer-empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: #999;
+}
+
+.lecturer-empty i {
+    font-size: 64px;
+    margin-bottom: 20px;
+    color: #ddd;
+}
+
+.lecturer-empty p {
+    font-size: 18px;
+    color: #999;
+}
+
+/* Responsive */
+@media (max-width: 1199px) {
+    .uk-width-large-1-4 {
+        width: 33.333% !important;
+    }
+}
+
+@media (max-width: 959px) {
+    .lecturer-title {
+        font-size: 36px;
+    }
+    
+    .title-underline {
+        width: 150px;
+    }
+    
+    .lecturer-featured-image {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .featured-placeholder span {
+        font-size: 80px;
+    }
+    
+    .lecturer-image-wrapper {
+        height: 280px;
+    }
+    
+    .lecturer-initials {
+        font-size: 70px;
+    }
+    
+    .uk-width-large-1-4,
+    .uk-width-medium-1-3 {
+        width: 50% !important;
+    }
+    
+    .lecturer-header-content,
+    .lecturer-header-image {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .panel-lecturer-list {
+        padding: 60px 0;
+    }
+    
+    .lecturer-list-header {
+        margin-bottom: 30px;
+    }
+
+    .lecturer-features-section {
+        margin-bottom: 40px;
+    }
+
+    .feature-card {
+        padding: 30px 20px;
+        margin-bottom: 20px;
+    }
+
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .feature-icon i {
+        font-size: 32px;
+    }
+
+    .feature-title {
+        font-size: 18px;
+    }
+
+    .feature-content {
+        font-size: 13px;
+    }
+
+    .lecturers-grid-header {
+        margin-bottom: 40px;
+    }
+
+    .grid-title {
+        font-size: 28px;
+    }
+
+    .grid-description {
+        font-size: 15px;
+    }
+    
+    .lecturer-title {
+        font-size: 32px;
+    }
+    
+    .title-underline {
+        width: 120px;
+        height: 4px;
+    }
+    
+    .lecturer-intro-list li {
+        font-size: 15px;
+    }
+    
+    .lecturer-featured-image {
+        width: 200px;
+        height: 200px;
+        margin: 20px auto 0;
+    }
+    
+    .featured-placeholder span {
+        font-size: 70px;
+    }
+    
+    .decor-v {
+        font-size: 24px;
+    }
+    
+    .lecturer-image-wrapper {
+        height: 250px;
+    }
+    
+    .lecturer-initials {
+        font-size: 60px;
+    }
+    
+    .uk-width-large-1-4,
+    .uk-width-medium-1-3,
+    .uk-width-small-1-2,
+    .uk-width-medium-2-3,
+    .uk-width-medium-1-3 {
+        width: 100% !important;
+    }
+}
