@@ -26,6 +26,21 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-row">
+                                    <label for="" class="control-label text-left">Năm sinh</label>
+                                    <input 
+                                        type="text"
+                                        name="birth_year"
+                                        value="{{ old('birth_year', ($lecturer->birth_year) ?? '' ) }}"
+                                        class="form-control"
+                                        placeholder=""
+                                        autocomplete="off"
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb15">
+                            <div class="col-lg-6">
+                                <div class="form-row">
                                     <label for="" class="control-label text-left">Chức Vụ <span class="text-danger">(*)</span></label>
                                     <input 
                                         type="text"
@@ -35,6 +50,43 @@
                                         placeholder=""
                                         autocomplete="off"
                                     >
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-row">
+                                    <label for="" class="control-label text-left">Chứng chỉ sư phạm</label>
+                                    <input 
+                                        type="text"
+                                        name="teaching_certificate"
+                                        value="{{ old('teaching_certificate', ($lecturer->teaching_certificate) ?? '' ) }}"
+                                        class="form-control"
+                                        placeholder=""
+                                        autocomplete="off"
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb15">
+                            <div class="col-lg-12">
+                                <div class="form-row">
+                                    <label for="" class="control-label text-left">Bằng cấp</label>
+                                    <textarea 
+                                        name="degree" 
+                                        class="form-control"
+                                        rows="3"
+                                        placeholder="">{{ old('degree', ($lecturer->degree) ?? '') }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb15">
+                            <div class="col-lg-12">
+                                <div class="form-row">
+                                    <label for="" class="control-label text-left">Kinh nghiệm giảng dạy</label>
+                                    <textarea 
+                                        name="experience" 
+                                        class="ck-editor" 
+                                        id="ckExperience"
+                                        data-height="200">{{ old('experience', ($lecturer->experience) ?? '') }}</textarea>
                                 </div>
                             </div>
                         </div>

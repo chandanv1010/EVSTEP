@@ -23,7 +23,11 @@ class UpdateLecturerRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
+            'birth_year' => 'nullable|string',
             'position' => 'required|string',
+            'degree' => 'nullable|string',
+            'teaching_certificate' => 'nullable|string',
+            'experience' => 'nullable|string',
         ];
     }
 

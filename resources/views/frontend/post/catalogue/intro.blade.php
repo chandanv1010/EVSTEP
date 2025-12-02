@@ -414,9 +414,32 @@
         </div>
     @endif
 
-    {{-- Khối 6 và 7: CTA và Form đăng ký (include từ file chung) --}}
-    @include('frontend.component.intro-cta-register')
-
+    <div class="panel-vstep-register page-setup">
+        <div class="uk-container uk-container-center">
+            <h2 class="promo-title"> bắt đầu chinh phục VSTEP ngay hôm nay</h2>
+            <div class="uk-grid uk-grid-medium" data-uk-grid-match>
+                {{-- Left: Promotional Content --}}
+                <div class="uk-width-medium-1-2">
+                    <div class="register-promo wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                       
+                        <div class="promo-graphic">
+                           <img src="{{ asset('frontend/resources/img/form-bg.png') }}" alt="Promo Graphic">
+                        </div>
+                        <div class="promo-text">
+                            <p>Hơn 10000 hv đã thành công lấy chứng chỉ tiếng anh A2 B1 B2</p>
+                            <p>cấp tốc để phục vụ cho học tập, công việc.</p>
+                            <p class="promo-question">Bạn có muốn trở thành người tiếp theo?</p>
+                        </div>
+                    </div>
+                </div>
+                
+                {{-- Right: Registration Form --}}
+                <div class="uk-width-medium-1-2">
+                    @include('frontend.component.register-form')
+                </div>
+            </div>
+        </div>
+    </div>
     {{-- Khối 8: Giảng viên --}}
     @if((isset($introduce['block_8_label']) || isset($introduce['block_8_title'])) && isset($lecturers) && $lecturers->isNotEmpty())
         @php

@@ -63,10 +63,10 @@
                 </div>
             </div>
         </div>
-        <div class="row mb15 hidden">
+        <div class="row mb15">
             <div class="col-lg-12">
                 <div class="form-row">
-                    <label for="" class="control-label text-left">Giảng viên<span class="text-danger">(*)</span></label>
+                    <label for="" class="control-label text-left">Giảng viên</label>
                     <select name="lecturer_id" class="form-control setupSelect2">
                         <option value="0">[Chọn Giảng Viên]</option>
                         @foreach($lecturers as $key => $val)

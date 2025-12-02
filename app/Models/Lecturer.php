@@ -15,7 +15,11 @@ class Lecturer extends Authenticatable
 
     protected $fillable = [
         'name',
+        'birth_year',
         'position',
+        'degree',
+        'teaching_certificate',
+        'experience',
         'description',
         'canonical',
         'image',

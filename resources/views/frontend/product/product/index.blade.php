@@ -18,6 +18,9 @@
         ->count();
     $modelId = $product->id;
     
+    // Lecturer info
+    $lecturer = $product->lecturers ?? null;
+    
     // Format price
     $productPrice = $product->price ?? 0;
     $priceSale = ($price['priceSale'] > 0) ? $price['priceSale'] : $productPrice;
@@ -206,14 +209,43 @@
                 </div>
             </div>
             
-            {{-- Row 2: Content + Related Products --}}
-            <div class="product-detail-row-2">
+            {{-- Row 2: Content (3/4) + Sidebar (1/4) --}}
+            <div class="product-detail-row-2" id="product-detail-container">
+                <div class="uk-grid uk-grid-medium" data-uk-grid-match>
+                    {{-- Left: Content 3/4 --}}
+                    <div class="uk-width-medium-3-4">
                 {{-- Content --}}
                 @if($content)
                     <div class="product-content wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
                         <h2 class="content-title">Nội dung khóa học</h2>
                         <div class="content-body">
                             {!! $content !!}
+                        </div>
+                    </div>
+                @endif
+
+                {{-- Lecturer Section --}}
+                @if($lecturer)
+                    <div class="product-lecturer wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.35s">
+                        <h2 class="lecturer-section-title">Giáo viên khóa học</h2>
+                        <div class="lecturer-info-box">
+                            <div class="lecturer-text">
+                                <h3 class="lecturer-name-title">{{ $lecturer->name }}</h3>
+                                @if(!empty($lecturer->experience))
+                                    <div class="lecturer-experience">
+                                        {!! $lecturer->experience !!}
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="lecturer-image-box">
+                                @if(!empty($lecturer->image))
+                                    <img src="{{ $lecturer->image }}" alt="{{ $lecturer->name }}" class="lecturer-photo">
+                                @else
+                                    <div class="lecturer-photo-placeholder">
+                                        <span>{{ strtoupper(substr($lecturer->name, 0, 1)) }}</span>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 @endif
@@ -256,7 +288,368 @@
                         </div>
                     </div>
                 @endif
+                    </div>
+
+                    {{-- Right: Sidebar 1/4 --}}
+                    <div class="uk-width-medium-1-4">
+                        <div class="product-sidebar" data-uk-sticky="{boundary: true,top:20}" style="height:100%;">
+                            {{-- CTA Box --}}
+                            <div class="sidebar-cta-box wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.3s">
+                                {{-- CTA Button --}}
+                                <a href="{{ $system['product_cta_cta_button_link'] ?? '#' }}" class="cta-button" target="_blank">
+                                    <i class="fa fa-comment"></i>
+                                    {{ $system['product_cta_cta_button_text'] ?? 'Nhắn VSTEP EASY ngay' }}
+                                </a>
+
+                                {{-- Overview Box --}}
+                                <div class="overview-box">
+                                    <h3 class="overview-title">{{ $system['product_cta_overview_title'] ?? 'Tổng quan khóa Xây dựng nền tảng' }}</h3>
+                                    
+                                    <ul class="overview-list">
+                                        {{-- Item 1 --}}
+                                        <li class="overview-item">
+                                            <i class="fa fa-graduation-cap"></i>
+                                            <span>{{ $system['product_cta_overview_item_1'] ?? 'Đầu ra: Lấy lại gốc ngữ pháp tiếng Anh cơ bản;' }}</span>
+                                        </li>
+                                        
+                                        {{-- Item 2 --}}
+                                        <li class="overview-item">
+                                            <i class="fa fa-calendar"></i>
+                                            <span>{{ $system['product_cta_overview_item_2'] ?? 'Học online bất cứ khi nào có thiết bị kết nối internet;' }}</span>
+                                        </li>
+                                        
+                                        {{-- Item 3 --}}
+                                        <li class="overview-item">
+                                            <i class="fa fa-gift"></i>
+                                            <span>{{ $system['product_cta_overview_item_3'] ?? 'Nội dung khoa học được thu sẵn và chia thành 12 video chủ đề;' }}</span>
+                                        </li>
+                                        
+                                        {{-- Price --}}
+                                        <li class="overview-item">
+                                            <i class="fa fa-star"></i>
+                                            <span><strong>Học phí:</strong> {{ $priceFormatted }}₫</span>
+                                        </li>
+                                    </ul>
+                                    
+                                    {{-- Special Note --}}
+                                    @if(!empty($system['product_cta_overview_item_4']))
+                                        <div class="special-note">
+                                            <strong>Đặc biệt:</strong> {{ $system['product_cta_overview_item_4'] }}
+                                        </div>
+                                    @else
+                                        <div class="special-note">
+                                            <strong>Đặc biệt:</strong> Tặng miễn phí khóa Xây dựng nền tảng cho những học viên đăng ký khóa Chinh phục B1 và Bứt phá B2;
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+<style>
+/* Product Detail Row 2 - Layout 3/4 - 1/4 */
+.product-detail-row-2 {
+    margin-top: 60px;
+}
+
+/* Lecturer Section */
+.product-lecturer {
+    background: #fff;
+    border-radius: 16px;
+    padding: 35px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.lecturer-section-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 25px;
+}
+
+.lecturer-info-box {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.lecturer-text {
+    flex: 1;
+}
+
+.lecturer-name-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.lecturer-experience {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #555;
+}
+
+.lecturer-experience ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lecturer-experience ul li {
+    padding-left: 25px;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.lecturer-experience ul li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #E85923;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.lecturer-image-box {
+    flex-shrink: 0;
+    width: 220px;
+}
+
+.lecturer-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 4px solid #E3F2FD;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.lecturer-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, #E85923 0%, #ff7043 100%);
+    border-radius: 12px;
+    border: 4px solid #E3F2FD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.lecturer-photo-placeholder span {
+    font-size: 80px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-detail-row-2 > .uk-container {
+    position: relative;
+}
+
+.product-detail-row-2 .uk-grid {
+    align-items: flex-start !important;
+}
+
+.product-detail-row-2 .uk-width-medium-1-4 {
+    position: relative;
+}
+
+/* Sidebar Styles */
+.product-sidebar {
+    position: relative;
+}
+
+.sidebar-cta-box {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    max-height: calc(100vh - 100px);
+}
+
+.product-detail-row-2 .product-sidebar.uk-sticky {
+    bottom: auto !important;
+}
+
+.product-detail-row-2 .uk-width-medium-1-4 {
+    align-self: flex-start;
+}
+
+/* CTA Button - Orange Header */
+.cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 16px 20px;
+    background: #E85923;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background: #d94d1a;
+    color: #fff;
+}
+
+.cta-button i {
+    font-size: 18px;
+}
+
+/* Overview Box - White Content */
+.overview-box {
+    padding: 24px 20px;
+    background: #fff;
+}
+
+.overview-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* Overview List */
+.overview-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.overview-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.overview-item i {
+    font-size: 18px;
+    color: #E85923;
+    margin-top: 2px;
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+}
+
+.overview-item span {
+    flex: 1;
+    color: #333;
+}
+
+.overview-item strong {
+    color: #000;
+}
+
+/* Special Note */
+.special-note {
+    padding: 12px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.special-note strong {
+    color: #000;
+}
+
+/* Responsive */
+@media (max-width: 959px) {
+    .product-detail-row-2 .uk-width-medium-3-4,
+    .product-detail-row-2 .uk-width-medium-1-4 {
+        width: 100% !important;
+    }
+
+    .sidebar-cta-box {
+        position: relative;
+        top: 0;
+        margin-bottom: 30px;
+    }
+
+    .product-detail-row-2 {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 767px) {
+    .sidebar-cta-box {
+        border-radius: 12px;
+    }
+
+    .overview-box {
+        padding: 20px 16px;
+    }
+
+    .overview-title {
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+
+    .cta-button {
+        font-size: 15px;
+        padding: 14px 16px;
+    }
+
+    .overview-item {
+        font-size: 13px;
+        padding: 10px 0;
+    }
+
+    .overview-item i {
+        font-size: 16px;
+    }
+
+    .special-note {
+        font-size: 13px;
+        padding: 10px 0;
+    }
+
+    .product-lecturer {
+        padding: 25px 20px;
+    }
+
+    .lecturer-section-title {
+        font-size: 22px;
+    }
+
+    .lecturer-info-box {
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
+
+    .lecturer-image-box {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .lecturer-name-title {
+        font-size: 18px;
+    }
+
+    .lecturer-experience {
+        font-size: 14px;
+    }
+
+    .lecturer-photo-placeholder span {
+        font-size: 60px;
+    }
+}
+</style>
+
 @endsection
