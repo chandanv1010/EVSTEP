@@ -377,7 +377,7 @@
                                             <span>{{ $duration }} tuần</span>
                                         </div>
                                     </div>
-                                    <p class="course-description">{!! $courseDescription !!}</p>
+                                    <p class="course-description">{!! strip_tags($courseDescription) !!}</p>
                                     <div class="course-price">{{ $coursePrice }}₫</div>
                                     <div class="course-buttons">
                                         <a href="{{ $courseCanonical }}" class="btn btn-buy">Mua Khóa</a>
