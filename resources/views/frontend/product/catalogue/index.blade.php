@@ -93,8 +93,8 @@
                                     </div>
                                 </div>
                                 <div class="service-buttons">
-                                    <button type="button" class="btn btn-cart addToCart" data-id="{{ $product->id }}">THÊM VÀO GIỎ HÀNG</button>
-                                    <a href="{{ $productCanonical }}" class="btn btn-buy">MUA NGAY</a>
+                                    <a href="{{ $productCanonical }}" class="btn btn-cart">Xem chi tiết</a>
+                                    <button type="button" class="btn btn-buy addToCart" data-id="{{ $product->id }}">Mua ngay</button>
                                 </div>
                             </div>
                         @endforeach
@@ -150,12 +150,12 @@
                                         @endif
                                     </div>
                                     @if($productDescription)
-                                        <p class="course-description">{{ \Illuminate\Support\Str::limit(strip_tags($productDescription), 100) }}</p>
+                                        <div class="course-description">{{ \Illuminate\Support\Str::limit(strip_tags($productDescription), 100) }}</div>
                                     @endif
                                     <div class="course-price">{{ $productPrice }}₫</div>
                                     <div class="course-buttons">
-                                        <a href="{{ $productCanonical }}" class="btn btn-buy">Mua Khóa</a>
-                                        <button type="button" class="btn btn-cart addToCart" data-id="{{ $product->id }}">Thêm vào giỏ hàng</button>
+                                        <a href="{{ $productCanonical }}" class="btn btn-buy">Xem chi tiết</a>
+                                        <button type="button" class="btn btn-cart addToCart" data-id="{{ $product->id }}">Mua ngay</button>
                                     </div>
                                 </div>
                             </div>

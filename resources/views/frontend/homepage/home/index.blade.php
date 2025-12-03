@@ -377,11 +377,11 @@
                                             <span>{{ $duration }} tuần</span>
                                         </div>
                                     </div>
-                                    <p class="course-description">{!! strip_tags($courseDescription) !!}</p>
+                                    <div class="course-description">{!! $courseDescription !!}</div>
                                     <div class="course-price">{{ $coursePrice }}₫</div>
                                     <div class="course-buttons">
-                                        <a href="{{ $courseCanonical }}" class="btn btn-buy">Mua Khóa</a>
-                                        <button type="button" class="btn btn-cart addToCart" data-id="{{ $course->id }}">Thêm vào giỏ hàng</button>
+                                        <a href="{{ $courseCanonical }}" class="btn btn-buy">Xem chi tiết</a>
+                                        <button type="button" class="btn btn-cart addToCart" data-id="{{ $course->id }}">Mua ngay</button>
                                     </div>
                                 </div>
                             </div>
@@ -464,8 +464,8 @@
                                                 </div>
                                             </div>
                                             <div class="service-buttons">
-                                                <button type="button" class="btn btn-cart addToCart" data-id="{{ $service->id }}">THÊM VÀO GIỎ HÀNG</button>
-                                                <a href="{{ $serviceCanonical }}" class="btn btn-buy">MUA NGAY</a>
+                                                <a href="{{ $serviceCanonical }}" class="btn btn-cart">Xem chi tiết</a>
+                                                <button type="button" class="btn btn-buy addToCart" data-id="{{ $service->id }}">Mua ngay</button>
                                             </div>
                                         </div>
                                     </div>

@@ -43,11 +43,9 @@
                         @php
                             $galleryItems = [];
                             
-                            // Add video/iframe first
-                            if($iframe) {
-                                $galleryItems[] = ['type' => 'video', 'content' => $iframe];
-                            } elseif($image) {
-                                $galleryItems[] = ['type' => 'video-preview', 'content' => $image];
+                            // Add main image first
+                            if($image) {
+                                $galleryItems[] = ['type' => 'image', 'content' => $image];
                             }
                             
                             // Add gallery images
@@ -68,25 +66,7 @@
                                     <div class="swiper-wrapper">
                                         @foreach($galleryItems as $item)
                                             <div class="swiper-slide">
-                                                @if($item['type'] === 'video')
-                                                    <div class="gallery-item gallery-video">
-                                                        <div class="video-wrapper">
-                                                            {!! $item['content'] !!}
-                                                        </div>
-                                                    </div>
-                                                @elseif($item['type'] === 'video-preview')
-                                                    <div class="gallery-item gallery-video-preview">
-                                                        <div class="video-preview">
-                                                            <img src="{{ asset($item['content']) }}" alt="{{ $name }}">
-                                                            <div class="video-overlay">
-                                                                <div class="play-icon">
-                                                                    <i class="fa fa-play-circle"></i>
-                                                                </div>
-                                                                <p>Video giới thiệu</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @elseif($item['type'] === 'qrcode')
+                                                @if($item['type'] === 'qrcode')
                                                     <div class="gallery-item gallery-qrcode">
                                                         <div class="qrcode-wrapper">
                                                             {!! $item['content'] !!}
