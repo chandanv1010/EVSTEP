@@ -2824,7 +2824,7 @@ input[type="button"],
     }
     
     .register-form-new {
-        background: #fff;
+        background: #FFE5D1;
         border-radius: 12px;
         padding: 40px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -7399,6 +7399,7 @@ input[type="button"],
     background: #fff;
     border-radius: 16px;
     padding: 30px;
+    border: 2px solid #E85923;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
@@ -7565,13 +7566,15 @@ input[type="button"],
             }
             
             &.btn-buy {
-                background: #E85923;
+                background: #ED1B24;
+                border: 2px solid #ED1B24;
                 color: #fff;
                 
                 &:hover {
-                    background: #d14a1a;
+                    background: #c9151d;
+                    border-color: #c9151d;
                     transform: translateY(-2px);
-                    box-shadow: 0 4px 12px rgba(232, 89, 35, 0.3);
+                    box-shadow: 0 4px 12px rgba(237, 27, 36, 0.4);
                 }
             }
         }
@@ -8008,13 +8011,17 @@ input[type="button"],
                 }
                 
                 &.btn-add-cart {
-                    background: linear-gradient(135deg, #E85923 0%, #FF6B35 100%);
+                    background: #ED1B24;
+                    border: 2px solid #ED1B24;
                     color: #fff;
+                    box-shadow: 0 4px 12px rgba(237, 27, 36, 0.3);
                     
                     &:hover {
-                        background: linear-gradient(135deg, #FF6B35 0%, #E85923 100%);
+                        background: #c9151d;
+                        border-color: #c9151d;
+                        color: #fff;
                         transform: translateY(-2px);
-                        box-shadow: 0 4px 12px rgba(232, 89, 35, 0.3);
+                        box-shadow: 0 6px 16px rgba(237, 27, 36, 0.4);
                     }
                     
                     i {
