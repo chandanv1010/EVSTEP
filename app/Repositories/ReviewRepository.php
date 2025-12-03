@@ -31,7 +31,7 @@ class ReviewRepository extends BaseRepository
         // int $currentPage = 1,
         
     ){
-        $query = $this->model->select($column);
+        $query = $this->model->select($column)->with('reviewable.languages');
         return $query  
                 ->keyword($condition['keyword'] ?? null, ['fullname', 'email', 'phone', 'description'])
                 ->publish($condition['publish'] ?? null)

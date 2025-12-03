@@ -129,34 +129,34 @@ class System{
             ]
         ];
 
-        $data['background'] = [
-            'label' => 'Cấu hình background',
-            'description' => '',
-            'value' => [
-                '1' => ['type' => 'images', 'label' => 'Background (banner)'],
-                '2' => ['type' => 'images', 'label' => 'Background (đăng ký)'],
-                '3' => ['type' => 'images', 'label' => 'Background (logo)'],
-            ]
-        ];
+        // $data['background'] = [
+        //     'label' => 'Cấu hình background',
+        //     'description' => '',
+        //     'value' => [
+        //         '1' => ['type' => 'images', 'label' => 'Background (banner)'],
+        //         '2' => ['type' => 'images', 'label' => 'Background (đăng ký)'],
+        //         '3' => ['type' => 'images', 'label' => 'Background (logo)'],
+        //     ]
+        // ];
 
-        $data['text'] = [
-            'label' => 'Cấu hình text',
-            'description' => '',
-            'value' => [
-                '1' => ['type' => 'text', 'label' => 'Text_1'],
-                '2' => ['type' => 'text', 'label' => 'Text_2'],
-                '3' => ['type' => 'textarea', 'label' => 'Text_3'],
-                '4' => ['type' => 'text', 'label' => 'Text_4'],
-                '5' => ['type' => 'text', 'label' => 'Text_5'],
-                '6' => ['type' => 'textarea', 'label' => 'Text_6'],
-                '7' => ['type' => 'text', 'label' => 'Text_7'],
-                '8' => ['type' => 'text', 'label' => 'Text_8'],
-                '9' => ['type' => 'text', 'label' => 'Text_9'],
-                '10' => ['type' => 'text', 'label' => 'Text_10'],
-                '11' => ['type' => 'text', 'label' => 'Text_11'],
-                '12' => ['type' => 'text', 'label' => 'Text_12'],
-            ]
-        ];
+        // $data['text'] = [
+        //     'label' => 'Cấu hình text',
+        //     'description' => '',
+        //     'value' => [
+        //         '1' => ['type' => 'text', 'label' => 'Text_1'],
+        //         '2' => ['type' => 'text', 'label' => 'Text_2'],
+        //         '3' => ['type' => 'textarea', 'label' => 'Text_3'],
+        //         '4' => ['type' => 'text', 'label' => 'Text_4'],
+        //         '5' => ['type' => 'text', 'label' => 'Text_5'],
+        //         '6' => ['type' => 'textarea', 'label' => 'Text_6'],
+        //         '7' => ['type' => 'text', 'label' => 'Text_7'],
+        //         '8' => ['type' => 'text', 'label' => 'Text_8'],
+        //         '9' => ['type' => 'text', 'label' => 'Text_9'],
+        //         '10' => ['type' => 'text', 'label' => 'Text_10'],
+        //         '11' => ['type' => 'text', 'label' => 'Text_11'],
+        //         '12' => ['type' => 'text', 'label' => 'Text_12'],
+        //     ]
+        // ];
 
         
         $data['script'] = [
@@ -168,16 +168,16 @@ class System{
             ]
         ];
 
-        $data['bank'] = [
-            'label' => 'Cấu hình thanh toán',
-            'description' => '',
-            'value' => [
-                '1' => ['type' => 'text', 'label' => 'Ngân hàng'],
-                '2' => ['type' => 'text', 'label' => 'Số tài khoản'],
-                '3' => ['type' => 'text', 'label' => 'Chủ tài khoản'],
-                '4' => ['type' => 'images', 'label' => 'QR code'],
-            ]
-        ];
+        // $data['bank'] = [
+        //     'label' => 'Cấu hình thanh toán',
+        //     'description' => '',
+        //     'value' => [
+        //         '1' => ['type' => 'text', 'label' => 'Ngân hàng'],
+        //         '2' => ['type' => 'text', 'label' => 'Số tài khoản'],
+        //         '3' => ['type' => 'text', 'label' => 'Chủ tài khoản'],
+        //         '4' => ['type' => 'images', 'label' => 'QR code'],
+        //     ]
+        // ];
 
         $data['lecturer'] = [
             'label' => 'Cấu hình Giảng viên',
@@ -194,6 +194,20 @@ class System{
                 'feature_3_content' => ['type' => 'textarea', 'label' => 'Tính năng 3 - Nội dung'],
                 'grid_title' => ['type' => 'text', 'label' => 'Tiêu đề danh sách giảng viên'],
                 'grid_description' => ['type' => 'textarea', 'label' => 'Mô tả danh sách giảng viên'],
+            ]
+        ];
+
+        $data['product_cta'] = [
+            'label' => 'Cấu hình CTA Sản phẩm',
+            'description' => 'Cấu hình nội dung hiển thị trong khối CTA sidebar bên phải trang chi tiết sản phẩm',
+            'value' => [
+                'cta_button_text' => ['type' => 'text', 'label' => 'Text nút CTA (ví dụ: Nhắn VSTEP EASY ngay)'],
+                'cta_button_link' => ['type' => 'text', 'label' => 'Link nút CTA'],
+                'overview_title' => ['type' => 'text', 'label' => 'Tiêu đề tổng quan (ví dụ: Tổng quan khóa Xây dựng nền tảng)'],
+                'overview_item_1' => ['type' => 'textarea', 'label' => 'Mục 1 - Đầu ra'],
+                'overview_item_2' => ['type' => 'textarea', 'label' => 'Mục 2 - Học online'],
+                'overview_item_3' => ['type' => 'textarea', 'label' => 'Mục 3 - Nội dung khóa học'],
+                'overview_item_4' => ['type' => 'textarea', 'label' => 'Đặc biệt - Ưu đãi'],
             ]
         ];
        

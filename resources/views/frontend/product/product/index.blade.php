@@ -88,6 +88,82 @@
                                 </div>
                             @endif
                         </div>
+
+                        {{-- Testimonials Marquee --}}
+                        @php
+                            $productReviews = $product->reviews()->where('status', 1)->get();
+                        @endphp
+                        @if($productReviews->isNotEmpty())
+                            <div class="testimonials-marquee-section">
+                                <div class="marquee-wrapper">
+                                    <div class="marquee-content">
+                                        @foreach($productReviews as $review)
+                                            <div class="testimonial-card">
+                                                <div class="quote-icon">"</div>
+                                                <div class="testimonial-header">
+                                                    @if($review->image)
+                                                        <div class="avatar">
+                                                            <img src="{{ $review->image }}" alt="{{ $review->fullname }}">
+                                                        </div>
+                                                    @else
+                                                        <div class="avatar avatar-placeholder">
+                                                            <span>{{ strtoupper(substr($review->fullname, 0, 1)) }}</span>
+                                                        </div>
+                                                    @endif
+                                                    <div class="rating">
+                                                        @for($i = 1; $i <= 5; $i++)
+                                                            @if($i <= floor($review->score))
+                                                                <i class="fa fa-star"></i>
+                                                            @elseif($i - 0.5 <= $review->score)
+                                                                <i class="fa fa-star-half-o"></i>
+                                                            @else
+                                                                <i class="fa fa-star-o"></i>
+                                                            @endif
+                                                        @endfor
+                                                    </div>
+                                                </div>
+                                                <div class="testimonial-content">
+                                                    <h4 class="reviewer-name">{{ $review->fullname }}</h4>
+                                                    <p class="testimonial-text">{{ $review->description }}</p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        {{-- Duplicate for seamless loop --}}
+                                        @foreach($productReviews as $review)
+                                            <div class="testimonial-card">
+                                                <div class="quote-icon">"</div>
+                                                <div class="testimonial-header">
+                                                    @if($review->image)
+                                                        <div class="avatar">
+                                                            <img src="{{ $review->image }}" alt="{{ $review->fullname }}">
+                                                        </div>
+                                                    @else
+                                                        <div class="avatar avatar-placeholder">
+                                                            <span>{{ strtoupper(substr($review->fullname, 0, 1)) }}</span>
+                                                        </div>
+                                                    @endif
+                                                    <div class="rating">
+                                                        @for($i = 1; $i <= 5; $i++)
+                                                            @if($i <= floor($review->score))
+                                                                <i class="fa fa-star"></i>
+                                                            @elseif($i - 0.5 <= $review->score)
+                                                                <i class="fa fa-star-half-o"></i>
+                                                            @else
+                                                                <i class="fa fa-star-o"></i>
+                                                            @endif
+                                                        @endfor
+                                                    </div>
+                                                </div>
+                                                <div class="testimonial-content">
+                                                    <h4 class="reviewer-name">{{ $review->fullname }}</h4>
+                                                    <p class="testimonial-text">{{ $review->description }}</p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                     
                     {{-- Right: Product Info --}}
@@ -169,13 +245,13 @@
                             
                             {{-- Action Buttons --}}
                             <div class="product-detail-actions">
-                                <button type="button" class="btn btn-consult open-register-popup">
+                                <button type="button" class="btn btn-consult btn-register-red open-register-popup">
                                     <i class="fa fa-phone"></i>
-                                    Nhận tư vấn
+                                    Đăng ký ngay
                                 </button>
                                 <button type="button" class="btn btn-add-cart addToCart" data-id="{{ $product->id }}">
                                     <i class="fa fa-shopping-cart"></i>
-                                    Thêm vào giỏ hàng
+                                    Mua ngay
                                 </button>
                             </div>
                             

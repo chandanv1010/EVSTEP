@@ -19,7 +19,10 @@
         @if(isset($reviews) && is_object($reviews))
             @foreach($reviews as $review)
                 @php
-                    $reviewableLink = $review->reviewable->languages->first()->pivot->canonical;
+                    $reviewableLink = null;
+                    if($review->reviewable && $review->reviewable->languages && $review->reviewable->languages->first()) {
+                        $reviewableLink = $review->reviewable->languages->first()->pivot->canonical ?? null;
+                    }
                 @endphp
                 <tr >
                     <td>
@@ -44,10 +47,14 @@
                         <div class="text-navy">{{ $review->score }}</div>
                     </td>
                     <td>
-                        @if($review->status == 0)
-                            <a href="{{ write_url($reviewableLink) }}" target="_blank" id="review-link" class="disabled-link">Click để xem đối tượng</a>
+                        @if($reviewableLink)
+                            @if($review->status == 0)
+                                <a href="{{ write_url($reviewableLink) }}" target="_blank" id="review-link" class="disabled-link">Click để xem đối tượng</a>
+                            @else
+                                <a href="{{ write_url($reviewableLink) }}" target="_blank" id="review-link" class="">Click để xem đối tượng</a>
+                            @endif
                         @else
-                            <a href="{{ write_url($reviewableLink) }}" target="_blank" id="review-link" class="">Click để xem đối tượng</a>
+                            <span class="text-muted">Đối tượng đã bị xóa</span>
                         @endif
                     </td>
                     <td>
