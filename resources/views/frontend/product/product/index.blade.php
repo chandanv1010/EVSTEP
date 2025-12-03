@@ -61,7 +61,13 @@
                             }
                         @endphp
                         <div class="product-gallery wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.1s">
-                            @if(count($galleryItems) > 0)
+                            @if($image)
+                                <div class="product-main-image">
+                                    <img src="{{ asset($image) }}" alt="{{ $name }}" style="width: 100%; height: auto; border-radius: 12px;">
+                                </div>
+                            @endif
+                            {{-- Comment slide gallery --}}
+                            {{-- @if(count($galleryItems) > 0)
                                 <div class="swiper product-gallery-swiper">
                                     <div class="swiper-wrapper">
                                         @foreach($galleryItems as $item)
@@ -86,7 +92,7 @@
                                         <div class="swiper-button-prev"></div>
                                     @endif
                                 </div>
-                            @endif
+                            @endif --}}
                         </div>
 
                         {{-- Testimonials Marquee --}}
