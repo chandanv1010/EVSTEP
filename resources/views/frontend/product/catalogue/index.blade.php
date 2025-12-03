@@ -35,8 +35,11 @@
                 </div>
             @endif
             
-            {{-- Products List --}}
+            {{-- Products List with Sidebar --}}
             @if (!is_null($products) && $products->count() > 0)
+                <div class="uk-grid uk-grid-medium" data-uk-grid-match>
+                    {{-- Left: Products 3/4 --}}
+                    <div class="uk-width-medium-3-4">
                 @if($displayType === 'service')
                     {{-- Loại dịch vụ - sử dụng service-card --}}
                     <div class="service-grid">
@@ -169,6 +172,39 @@
                         @include('frontend.component.pagination', ['model' => $products])
                     </div>
                 @endif
+                    </div>
+
+                    {{-- Right: Sidebar Banner 1/4 --}}
+                    <div class="uk-width-medium-1-4">
+                        <div class="catalogue-sidebar">
+                            @php
+                                $slide = \App\Models\Slide::where('publish', 2)
+                                    ->where('keyword', 'banner-aside')
+                                    ->first();
+                            @endphp
+                            
+                            @if($slide && $slide->image)
+                                <div class="sidebar-banner">
+                                    @if($slide->canonical)
+                                        <a href="{{ $slide->canonical }}" target="_blank">
+                                            <img src="{{ asset($slide->image) }}" alt="{{ $slide->name ?? 'Banner' }}">
+                                        </a>
+                                    @else
+                                        <img src="{{ asset($slide->image) }}" alt="{{ $slide->name ?? 'Banner' }}">
+                                    @endif
+                                </div>
+                            @else
+                                <div class="sidebar-banner-placeholder">
+                                    <div class="placeholder-content">
+                                        <i class="fa fa-image"></i>
+                                        <p>Banner Placeholder</p>
+                                        <span>Thêm banner từ Slides</span>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
             @else
                 <div class="no-products">
                     <p>Không có sản phẩm nào trong danh mục này.</p>
