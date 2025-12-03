@@ -124,7 +124,7 @@
                                                 </div>
                                                 <div class="testimonial-content">
                                                     <h4 class="reviewer-name">{{ $review->fullname }}</h4>
-                                                    <p class="testimonial-text">{{ $review->description }}</p>
+                                                    <p class="testimonial-text">{!! $review->description !!}</p>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -156,7 +156,7 @@
                                                 </div>
                                                 <div class="testimonial-content">
                                                     <h4 class="reviewer-name">{{ $review->fullname }}</h4>
-                                                    <p class="testimonial-text">{{ $review->description }}</p>
+                                                    <p class="testimonial-text">{!! $review->description !!}</p>
                                                 </div>
                                             </div>
                                         @endforeach

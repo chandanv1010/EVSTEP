@@ -7989,15 +7989,17 @@ input[type="button"],
                 }
                 
                 &.btn-consult {
-                    background: #fff;
-                    border: 2px solid #E85923;
-                    color: #E85923;
+                    background: #ED1B24;
+                    border: 2px solid #ED1B24;
+                    color: #fff;
+                    box-shadow: 0 4px 12px rgba(237, 27, 36, 0.3);
                     
                     &:hover {
-                        background: #E85923;
+                        background: #c9151d;
+                        border-color: #c9151d;
                         color: #fff;
                         transform: translateY(-2px);
-                        box-shadow: 0 4px 12px rgba(232, 89, 35, 0.3);
+                        box-shadow: 0 6px 16px rgba(237, 27, 36, 0.4);
                     }
                     
                     i {
