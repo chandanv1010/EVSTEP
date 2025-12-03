@@ -253,7 +253,7 @@
                             <div class="product-detail-actions">
                                 <button type="button" class="btn btn-consult btn-register-red open-register-popup">
                                     <i class="fa fa-phone"></i>
-                                    Đăng ký ngay
+                                    Nhận tư vấn
                                 </button>
                                 <button type="button" class="btn btn-add-cart addToCart" data-id="{{ $product->id }}">
                                     <i class="fa fa-shopping-cart"></i>
