@@ -181,16 +181,27 @@
                                 $slide = \App\Models\Slide::where('publish', 2)
                                     ->where('keyword', 'banner-aside')
                                     ->first();
+                                
+                                $bannerImage = null;
+                                $bannerLink = null;
+                                
+                                if($slide && $slide->item) {
+                                    $slideItems = is_string($slide->item) ? json_decode($slide->item, true) : $slide->item;
+                                    if(isset($slideItems['1']) && is_array($slideItems['1']) && count($slideItems['1']) > 0) {
+                                        $bannerImage = $slideItems['1'][0]['image'] ?? null;
+                                        $bannerLink = $slideItems['1'][0]['canonical'] ?? null;
+                                    }
+                                }
                             @endphp
                             
-                            @if($slide && $slide->image)
+                            @if($bannerImage)
                                 <div class="sidebar-banner">
-                                    @if($slide->canonical)
-                                        <a href="{{ $slide->canonical }}" target="_blank">
-                                            <img src="{{ asset($slide->image) }}" alt="{{ $slide->name ?? 'Banner' }}">
+                                    @if($bannerLink)
+                                        <a href="{{ $bannerLink }}" target="_blank">
+                                            <img src="{{ asset($bannerImage) }}" alt="{{ $slide->name ?? 'Banner' }}">
                                         </a>
                                     @else
-                                        <img src="{{ asset($slide->image) }}" alt="{{ $slide->name ?? 'Banner' }}">
+                                        <img src="{{ asset($bannerImage) }}" alt="{{ $slide->name ?? 'Banner' }}">
                                     @endif
                                 </div>
                             @else
@@ -198,7 +209,7 @@
                                     <div class="placeholder-content">
                                         <i class="fa fa-image"></i>
                                         <p>Banner Placeholder</p>
-                                        <span>Thêm banner từ Slides</span>
+                                        <span>Thêm banner từ Slides với keyword "banner-aside"</span>
                                     </div>
                                 </div>
                             @endif
