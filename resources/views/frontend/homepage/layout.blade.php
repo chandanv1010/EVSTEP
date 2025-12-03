@@ -11,6 +11,7 @@
         @include('frontend.component.header')
         @yield('content')
         @include('frontend.component.footer')
+        @include('frontend.component.fixed-contact')
         @include('frontend.component.script')
         {!! $system['script_2'] !!}
     </body>

@@ -48,20 +48,12 @@ class System{
                     ]
                 ],
                 'address' => ['type' => 'text', 'label' => 'Văn phòng giao dịch'],
-                'xuong' => ['type' => 'text', 'label' => 'Xưởng'],
-                'xuong_map' => [
-                    'type' => 'textarea', 
-                    'label' => 'Bản đồ xưởng',
-                    'link' => [
-                        'text' => 'Hướng dẫn thiết lập bản đồ',
-                        'href' => 'https://manhan.vn/hoc-website-nang-cao/huong-dan-nhung-ban-do-vao-website/',
-                        'target' => '_blank'
-                    ]
-                ],
                 'hotline' => ['type' => 'text', 'label' => 'Hotline'],
                 'technical_phone' => ['type' => 'text', 'label' => 'Hotline kỹ thuật'],
                 'sell_phone' => ['type' => 'text', 'label' => 'Hotline kinh doanh'],
                 'phone' => ['type' => 'text', 'label' => 'Số cố định'],
+                'zalo' => ['type' => 'text', 'label' => 'Số Zalo'],
+                'mess' => ['type' => 'text', 'label' => 'Mess'],
                 'fax' => ['type' => 'text', 'label' => 'Fax'],
                 'email' => ['type' => 'text', 'label' => 'Email'],
                 'website' => ['type' => 'text', 'label' => 'Website'],
@@ -77,30 +69,7 @@ class System{
                 'intro' => ['type' => 'textarea', 'label' => 'Giới thiệu'],
             ]
         ];
-        $data['hcm'] = [
-            'label' => 'Thông tin liên hệ',
-            'description' => 'Cài đặt thông tin liên hệ của website ví dụ: Địa chỉ công ty, Văn phòng giao dịch, Hotline, Bản đồ, vv...',
-            'value' => [
-                'address' => ['type' => 'text', 'label' => 'Địa chỉ Hồ Chí Minh'],
-                'phone' => ['type' => 'text', 'label' => 'Số điện thoại'],
-                'hotline' => ['type' => 'text', 'label' => 'Hotline'],
-                
-            ]
-        ];
-
-
-        $data['nm'] = [
-            'label' => 'Thông tin liên hệ',
-            'description' => 'Cài đặt thông tin liên hệ của website ví dụ: Địa chỉ công ty, Văn phòng giao dịch, Hotline, Bản đồ, vv...',
-            'value' => [
-                'address' => ['type' => 'text', 'label' => 'Địa chỉ Nhà Máy'],
-                'phone' => ['type' => 'text', 'label' => 'Số điện thoại'],
-                'hotline' => ['type' => 'text', 'label' => 'Hotline'],
-                
-            ]
-        ];
-       
-
+      
         $data['seo'] = [
             'label' => 'Cấu hình SEO dành cho trang chủ',
             'description' => 'Cài đặt đầy đủ thông tin về SEO của trang chủ website. Bao gồm tiêu đề SEO, Từ Khóa SEO, Mô Tả SEO, Meta images',

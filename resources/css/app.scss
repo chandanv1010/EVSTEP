@@ -106,6 +106,13 @@ input[type="button"],
     padding: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     min-height: 80px;
+    transition: box-shadow 0.3s ease;
+    
+    &.uk-active,
+    &.uk-sticky {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        animation: slideDown 0.3s ease;
+    }
 
     .header-logo {
         flex-shrink: 0;
@@ -483,7 +490,7 @@ input[type="button"],
         h3 {
             font-size: 20px;
             font-weight: 700;
-            color: #1a365d;
+            color: #000;
             margin: 0;
             
             @media (max-width: 640px) {
@@ -4617,7 +4624,7 @@ input[type="button"],
             .overlay-title {
                 font-size: 20px;
                 font-weight: 700;
-                color: #1a365d;
+                color: #000;
                 line-height: 1.3;
                 margin-bottom: 12px;
                 
@@ -5081,7 +5088,7 @@ input[type="button"],
         .schedule-table-title {
             font-size: 20px;
             font-weight: 700;
-            color: #1a365d;
+            color: #000;
             margin-bottom: 20px;
             
             @media (max-width: 640px) {
@@ -5106,7 +5113,7 @@ input[type="button"],
                         text-align: left;
                         font-size: 14px;
                         font-weight: 600;
-                        color: #1a365d;
+                        color: #000;
                         border-bottom: 2px solid #E85923;
                         
                         @media (max-width: 640px) {
@@ -5149,7 +5156,7 @@ input[type="button"],
         .timeline-title {
             font-size: 20px;
             font-weight: 700;
-            color: #1a365d;
+            color: #000;
             margin-bottom: 25px;
             
             @media (max-width: 640px) {
@@ -5608,7 +5615,7 @@ input[type="button"],
         .lecturer-name {
             font-size: 18px;
             font-weight: 700;
-            color: #1a365d;
+            color: #000;
             margin-bottom: 10px;
             line-height: 1.3;
             
@@ -5691,7 +5698,7 @@ input[type="button"],
         .catalogue-title {
             font-size: 42px;
             font-weight: 700;
-            color: #1a365d;
+            color: #000;
             line-height: 1.3;
             margin-bottom: 20px;
             
@@ -5813,7 +5820,7 @@ input[type="button"],
             .post-title {
                 font-size: 20px;
                 font-weight: 700;
-                color: #1a365d;
+                color: #000;
                 line-height: 1.4;
                 margin-bottom: 15px;
                 
@@ -6065,7 +6072,7 @@ input[type="button"],
         h3 {
             font-size: 18px;
             font-weight: 700;
-            color: #1a365d;
+            color: #000;
             margin: 0;
             
             @media (max-width: 640px) {
@@ -6194,7 +6201,7 @@ input[type="button"],
         .page-heading {
             font-size: 32px;
             font-weight: 700;
-            color: #1a365d;
+            color: #000;
             line-height: 1.4;
             margin-bottom: 15px;
             
@@ -6232,7 +6239,7 @@ input[type="button"],
                     h2 {
                         font-size: 24px;
                         font-weight: 700;
-                        color: #1a365d;
+                        color: #000;
                         margin-top: 35px;
                         margin-bottom: 15px;
                         line-height: 1.4;
@@ -6247,7 +6254,7 @@ input[type="button"],
                     h3 {
                         font-size: 20px;
                         font-weight: 600;
-                        color: #1a365d;
+                        color: #000;
                         margin-top: 25px;
                         margin-bottom: 12px;
                         line-height: 1.4;
@@ -6284,7 +6291,7 @@ input[type="button"],
                     
                     strong {
                         font-weight: 600;
-                        color: #1a365d;
+                        color: #000;
                     }
                     
                     img {
@@ -6327,7 +6334,7 @@ input[type="button"],
         .aside-heading {
             font-size: 18px;
             font-weight: 700;
-            color: #1a365d;
+            color: #000;
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #E85923;
@@ -6412,7 +6419,7 @@ input[type="button"],
         .aside-heading {
             font-size: 18px;
             font-weight: 700;
-            color: #1a365d;
+            color: #000;
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #E85923;
@@ -6504,7 +6511,7 @@ input[type="button"],
         .aside-heading {
             font-size: 18px;
             font-weight: 700;
-            color: #1a365d;
+            color: #000;
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #E85923;
@@ -6657,7 +6664,7 @@ input[type="button"],
             .heading-2 {
                 font-size: 28px;
                 font-weight: 700;
-                color: #1a365d;
+                color: #000;
                 margin-bottom: 15px;
                 
                 @media (max-width: 640px) {
@@ -6757,7 +6764,7 @@ input[type="button"],
             .heading-2 {
                 font-size: 24px;
                 font-weight: 700;
-                color: #1a365d;
+                color: #000;
                 margin-bottom: 20px;
                 
                 @media (max-width: 640px) {
@@ -6872,7 +6879,7 @@ input[type="button"],
         .section-title {
             font-size: 22px;
             font-weight: 700;
-            color: #1a365d;
+            color: #000;
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #E85923;
@@ -6951,7 +6958,7 @@ input[type="button"],
                 .post-title {
                     font-size: 18px;
                     font-weight: 700;
-                    color: #1a365d;
+                    color: #000;
                     line-height: 1.4;
                     margin-bottom: 10px;
                     
@@ -6987,7 +6994,7 @@ input[type="button"],
                     transition: color 0.3s ease;
                     
                     &:hover {
-                        color: #1a365d;
+                        color: #000;
                     }
                     
                     &::after {
@@ -7093,7 +7100,7 @@ input[type="button"],
         .catalogue-title {
             font-size: 36px;
             font-weight: 700;
-            color: #1a365d;
+            color: #000;
             line-height: 1.3;
             margin-bottom: 15px;
             
@@ -7896,7 +7903,7 @@ input[type="button"],
         .product-title {
             font-size: 32px;
             font-weight: 700;
-            color: #1a365d;
+            color: #000;
             line-height: 1.3;
             margin-bottom: 20px;
             
@@ -8137,7 +8144,7 @@ input[type="button"],
             .content-title {
                 font-size: 28px;
                 font-weight: 700;
-                color: #1a365d;
+                color: #000;
                 margin-bottom: 25px;
                 padding-bottom: 15px;
                 border-bottom: 2px solid #E85923;
@@ -8154,7 +8161,7 @@ input[type="button"],
                 color: #333;
                 
                 h1, h2, h3, h4, h5, h6 {
-                    color: #1a365d;
+                    color: #000;
                     font-weight: 700;
                     margin-top: 25px;
                     margin-bottom: 15px;
@@ -8190,7 +8197,7 @@ input[type="button"],
                     text-decoration: underline;
                     
                     &:hover {
-                        color: #1a365d;
+                        color: #000;
                     }
                 }
             }
@@ -8200,7 +8207,7 @@ input[type="button"],
             .related-title {
                 font-size: 28px;
                 font-weight: 700;
-                color: #1a365d;
+                color: #000;
                 margin-bottom: 30px;
                 text-align: center;
                 
@@ -8287,7 +8294,7 @@ input[type="button"],
                     .related-name {
                         font-size: 18px;
                         font-weight: 700;
-                        color: #1a365d;
+                        color: #000;
                         margin-bottom: 10px;
                         line-height: 1.4;
                         transition: color 0.3s ease;
@@ -8902,6 +8909,144 @@ input[type="button"],
     .uk-width-medium-2-3,
     .uk-width-medium-1-3 {
         width: 100% !important;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+// Fixed Contact Buttons
+.fixed-contact-buttons {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-btn {
+    min-width: 65px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    gap: 4px;
+    
+    i {
+        font-size: 18px;
+        transition: transform 0.3s ease;
+    }
+    
+    .btn-text {
+        font-size: 9px;
+        font-weight: 600;
+        line-height: 1.2;
+        text-align: center;
+    }
+    
+    .btn-label {
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 1.2;
+        text-align: center;
+    }
+    
+    &:hover {
+        transform: translateX(-5px);
+        background: #d14a1a;
+        box-shadow: 0 6px 20px rgba(232, 89, 35, 0.5);
+        
+        i {
+            transform: scale(1.1);
+        }
+    }
+    
+    &.btn-zalo {
+        background: #0068FF;
+        box-shadow: 0 3px 10px rgba(0, 104, 255, 0.3);
+        
+        &:hover {
+            background: #0056D6;
+            box-shadow: 0 6px 20px rgba(0, 104, 255, 0.5);
+        }
+    }
+    
+    &.btn-facebook {
+        background: #1877F2;
+        box-shadow: 0 3px 10px rgba(24, 119, 242, 0.3);
+        
+        &:hover {
+            background: #0C5DBD;
+            box-shadow: 0 6px 20px rgba(24, 119, 242, 0.5);
+        }
+    }
+    
+    &.btn-messenger {
+        background: linear-gradient(135deg, #00B2FF 0%, #006AFF 100%);
+        box-shadow: 0 3px 10px rgba(0, 106, 255, 0.3);
+        
+        &:hover {
+            background: linear-gradient(135deg, #0095D9 0%, #0056D6 100%);
+            box-shadow: 0 6px 20px rgba(0, 106, 255, 0.5);
+        }
+    }
+    
+    &.btn-phone {
+        background: #25D366;
+        box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+        animation: pulse-phone 2s ease-in-out infinite;
+        
+        &:hover {
+            background: #1EAF53;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+    }
+}
+
+@keyframes pulse-phone {
+    0%, 100% {
+        box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+    }
+    50% {
+        box-shadow: 0 3px 20px rgba(37, 211, 102, 0.6), 0 0 0 6px rgba(37, 211, 102, 0.1);
+    }
+}
+
+@media (max-width: 767px) {
+    .fixed-contact-buttons {
+        right: 10px;
+        gap: 6px;
+    }
+    
+    .contact-btn {
+        min-width: 60px;
+        padding: 10px 12px;
+        
+        i {
+            font-size: 18px;
+        }
+        
+        .btn-text {
+            font-size: 9px;
+        }
+        
+        .btn-label {
+            font-size: 10px;
+        }
     }
 }
 

@@ -52,7 +52,7 @@
     </div>
 
     {{-- Header Middle - White Background --}}
-    <div class="header-middle">
+    <div class="header-middle" data-uk-sticky="animation: uk-animation-slide-top">
         <div class="uk-container uk-container-center">
             <div class="uk-flex uk-flex-middle uk-flex-space-between">
                 {{-- Logo --}}
