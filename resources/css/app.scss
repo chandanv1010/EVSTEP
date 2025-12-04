@@ -57,6 +57,25 @@ input[type="button"],
     font-family: 'Mulish', sans-serif !important;
 }
 
+// Slide Desktop/Mobile Toggle
+.panel-slide-desktop {
+    display: block;
+}
+
+.panel-slide-mobile {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .panel-slide-desktop {
+        display: none;
+    }
+    
+    .panel-slide-mobile {
+        display: block;
+    }
+}
+
 // Header Styles
 .header-top {
     background-color: #E85923;
@@ -103,7 +122,7 @@ input[type="button"],
 // Header Middle - White Background
 .header-middle {
     background-color: #fff;
-    padding: 0;
+    padding: 0 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     min-height: 80px;
     transition: box-shadow 0.3s ease;
@@ -113,9 +132,15 @@ input[type="button"],
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
         animation: slideDown 0.3s ease;
     }
+    
+    .uk-container {
+        max-width: 100%;
+        padding: 0;
+    }
 
     .header-logo {
         flex-shrink: 0;
+        padding: 15px 0;
 
         a {
             display: block;
@@ -124,6 +149,19 @@ input[type="button"],
         img {
             max-height: 50px;
             width: auto;
+            max-width: 150px;
+        }
+        
+        @media (max-width: 1280px) {
+            img {
+                max-height: 45px;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            img {
+                max-height: 40px;
+            }
         }
 
         .logo-placeholder {
@@ -154,7 +192,11 @@ input[type="button"],
 
     .header-navigation {
         flex: 1;
-        margin: 0 20px 0 40px;
+        margin: 0 15px 0 20px;
+        
+        @media (max-width: 1280px) {
+            margin: 0 10px 0 15px;
+        }
     }
 
     // Navigation Menu Styles
@@ -162,10 +204,18 @@ input[type="button"],
         .main-menu {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
             list-style: none;
             margin: 0;
             padding: 0;
+            
+            @media (max-width: 1280px) {
+                gap: 18px;
+            }
+            
+            @media (max-width: 1024px) {
+                gap: 12px;
+            }
 
             > li {
                 position: relative;
@@ -181,6 +231,16 @@ input[type="button"],
                     gap: 5px;
                     transition: color 0.3s;
                     height: 100%;
+                    white-space: nowrap;
+                    
+                    @media (max-width: 1280px) {
+                        font-size: 14px;
+                        padding: 25px 0;
+                    }
+                    
+                    @media (max-width: 1024px) {
+                        font-size: 13px;
+                    }
 
                     &:hover,
                     &.active {
@@ -315,8 +375,16 @@ input[type="button"],
     .header-actions {
         display: flex;
         align-items: center;
-        gap: 20px;
+        gap: 15px;
         flex-shrink: 0;
+        
+        @media (max-width: 1280px) {
+            gap: 12px;
+        }
+        
+        @media (max-width: 1024px) {
+            gap: 10px;
+        }
     }
 
     .header-search {
@@ -334,9 +402,20 @@ input[type="button"],
             width: 200px;
             font-size: 14px;
             outline: none;
+            transition: width 0.3s ease;
 
             &:focus {
                 border-color: #E85923;
+            }
+            
+            @media (max-width: 1280px) {
+                width: 180px;
+                font-size: 13px;
+            }
+            
+            @media (max-width: 1024px) {
+                width: 150px;
+                padding: 7px 35px 7px 12px;
             }
         }
 
@@ -427,9 +506,11 @@ input[type="button"],
             transition: all 0.3s;
             border: none;
             cursor: pointer;
+            white-space: nowrap;
 
             svg {
                 color: #fff;
+                flex-shrink: 0;
             }
 
             &:hover {
@@ -437,7 +518,28 @@ input[type="button"],
                 transform: translateY(-2px);
                 box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
             }
+            
+            @media (max-width: 1280px) {
+                padding: 9px 18px;
+                font-size: 13px;
+            }
+            
+            @media (max-width: 1024px) {
+                padding: 8px 16px;
+                font-size: 13px;
+                gap: 6px;
+                
+                svg {
+                    width: 14px;
+                    height: 14px;
+                }
+            }
         }
+    }
+    
+    // Hide desktop header on small screens
+    @media (max-width: 960px) {
+        display: none;
     }
 }
 
@@ -1601,6 +1703,40 @@ input[type="button"],
         border-bottom: 1px solid #f0f0f0;
         padding: 0;
         
+        .mobile-nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding-right: 15px;
+        }
+        
+        .mobile-register-btn {
+            flex-shrink: 0;
+            background: #ED1B24;
+            color: #fff;
+            border: none;
+            padding: 8px 13px;
+            border-radius: 5px;
+            font-size: 10px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(237, 27, 36, 0.3);
+            
+            i {
+                font-size: 11px;
+            }
+            
+            &:hover {
+                background: #c9151d;
+                box-shadow: 0 4px 12px rgba(237, 27, 36, 0.4);
+            }
+        }
+        
         ul.main-menu {
             margin: 0;
             padding: 0;
@@ -1624,7 +1760,7 @@ input[type="button"],
                     align-items: center;
                     justify-content: center;
                     padding: 12px 16px;
-                    font-size: 14px;
+                    font-size: 13px;
                     color: #333;
                     text-decoration: none;
                     white-space: nowrap;
@@ -2064,17 +2200,22 @@ input[type="button"],
         }
     }
     
-    // Responsive
-    @media (max-width: 960px) {
-        & {
-            padding: 60px 0;
+    // Ẩn ::before dưới 1024px
+    @media (max-width: 1023px) {
+        .why-cards .why-card::before {
+            display: none !important;
         }
+    }
+    
+    // Tablet Landscape (768-1023px) - 3 cột nhỏ
+    @media (max-width: 1023px) and (min-width: 768px) {
+        padding: 60px 0;
         
         .why-header {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             
             .why-title {
-                font-size: 28px;
+                font-size: 36px;
             }
             
             .why-subtitle {
@@ -2085,30 +2226,30 @@ input[type="button"],
         .why-cards {
             .uk-grid {
                 > * {
-                    width: 100%;
-                    flex: 0 0 100%;
+                    width: calc(33.33% - 15px);
+                    flex: 0 0 calc(33.33% - 15px);
                     margin-bottom: 20px;
                 }
             }
             
             .why-card {
                 width: 100%;
-                padding: 30px 25px;
-                margin-bottom: 20px;
-                height:auto;
+                border-radius: 20px;
+                padding: 30px 20px;
+                height: auto;
+                min-height: 380px;
                 
                 .card-number {
                     font-size: 36px;
-                    margin-bottom: 0;
                 }
                 
                 .card-image {
-                    height: 100px;
+                    height: 90px;
                     margin-bottom: 20px;
                 }
                 
                 .card-title {
-                    font-size: 18px;
+                    font-size: 16px;
                 }
                 
                 .card-description {
@@ -2118,16 +2259,15 @@ input[type="button"],
         }
     }
     
-    @media (max-width: 640px) {
-        & {
-            padding: 40px 0;
-        }
+    // Tablet Portrait (641-767px) - 2 cột
+    @media (max-width: 767px) and (min-width: 641px) {
+        padding: 50px 0;
         
         .why-header {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             
             .why-title {
-                font-size: 24px;
+                font-size: 32px;
             }
             
             .why-subtitle {
@@ -2137,8 +2277,110 @@ input[type="button"],
         
         .why-cards {
             .uk-grid {
-                margin-left: 0;
+                > * {
+                    width: calc(50% - 10px);
+                    flex: 0 0 calc(50% - 10px);
+                    margin-bottom: 20px;
+                }
+            }
+            
+            .why-card {
+                width: 100%;
+                border-radius: 16px;
+                padding: 25px 20px;
+                height: auto;
+                min-height: 350px;
                 
+                .card-number {
+                    font-size: 32px;
+                }
+                
+                .card-image {
+                    height: 85px;
+                    margin-bottom: 18px;
+                }
+                
+                .card-title {
+                    font-size: 15px;
+                }
+                
+                .card-description {
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+    
+    // Mobile Landscape (481-640px) - 2 cột
+    @media (max-width: 640px) and (min-width: 481px) {
+        padding: 40px 0;
+        
+        .why-header {
+            margin-bottom: 35px;
+            
+            .why-title {
+                font-size: 28px;
+            }
+            
+            .why-subtitle {
+                font-size: 14px;
+            }
+        }
+        
+        .why-cards {
+            .uk-grid {
+                > * {
+                    width: calc(50% - 10px);
+                    flex: 0 0 calc(50% - 10px);
+                    margin-bottom: 15px;
+                }
+            }
+            
+            .why-card {
+                width: 100%;
+                border-radius: 12px;
+                padding: 20px 15px;
+                height: auto;
+                min-height: 320px;
+                
+                .card-number {
+                    font-size: 28px;
+                }
+                
+                .card-image {
+                    height: 75px;
+                    margin-bottom: 15px;
+                }
+                
+                .card-title {
+                    font-size: 14px;
+                }
+                
+                .card-description {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    
+    // Mobile Portrait (<480px) - 1 cột
+    @media (max-width: 480px) {
+        padding: 35px 0;
+        
+        .why-header {
+            margin-bottom: 30px;
+            
+            .why-title {
+                font-size: 24px;
+            }
+            
+            .why-subtitle {
+                font-size: 14px;
+            }
+        }
+        
+        .why-cards {
+            .uk-grid {
                 > * {
                     width: 100%;
                     flex: 0 0 100%;
@@ -2147,17 +2389,14 @@ input[type="button"],
                 }
             }
             
-            &::before{
-                display: none;
-            }
             .why-card {
                 width: 100%;
+                border-radius: 12px;
                 padding: 25px 20px;
-                height:auto;
+                height: auto;
                 
                 .card-number {
                     font-size: 32px;
-                    margin-bottom: 0;
                 }
                 
                 .card-image {
@@ -2166,7 +2405,7 @@ input[type="button"],
                 }
                 
                 .card-title {
-                    font-size: 16px;
+                    font-size: 15px;
                     margin-bottom: 12px;
                 }
                 
@@ -2176,18 +2415,6 @@ input[type="button"],
                 }
             }
         }
-    }
-}
-
-@media (max-width: 600px) {
-    .panel-vstep-why {
-       .why-card{
-       border-radius: 10px !important;
-       height:auto;
-        &:before{
-            display: none !important;
-        }
-       }
     }
 }
 
@@ -3335,14 +3562,26 @@ input[type="button"],
     // service-card styles are now defined globally below (see end of file)
     
     // Responsive
-    @media (max-width: 960px) {
+    // Desktop Small (1024-1279px)
+    @media (max-width: 1279px) and (min-width: 1024px) {
+        padding: 70px 0;
+        
+        .service-header {
+            .service-title {
+                font-size: 44px;
+            }
+        }
+    }
+    
+    // Tablet Landscape (768-1023px)
+    @media (max-width: 1023px) and (min-width: 768px) {
         padding: 60px 0;
         
         .service-header {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             
             .service-title {
-                font-size: 28px;
+                font-size: 36px;
             }
             
             .service-subtitle {
@@ -3351,7 +3590,7 @@ input[type="button"],
         }
         
         .service-slider {
-            padding: 0 60px;
+            padding: 0 50px;
             
             .service-prev,
             .service-next {
@@ -3360,6 +3599,45 @@ input[type="button"],
                 
                 &::after {
                     font-size: 20px;
+                }
+            }
+            
+            .service-prev {
+                left: -60px;
+            }
+            
+            .service-next {
+                right: -60px;
+            }
+        }
+    }
+    
+    // Tablet Portrait (641-767px)
+    @media (max-width: 767px) and (min-width: 641px) {
+        padding: 50px 0;
+        
+        .service-header {
+            margin-bottom: 40px;
+            
+            .service-title {
+                font-size: 32px;
+            }
+            
+            .service-subtitle {
+                font-size: 15px;
+            }
+        }
+        
+        .service-slider {
+            padding: 0 20px;
+            
+            .service-prev,
+            .service-next {
+                width: 45px;
+                height: 45px;
+                
+                &::after {
+                    font-size: 18px;
                 }
             }
             
@@ -3373,22 +3651,20 @@ input[type="button"],
         }
     }
     
+    // Mobile (< 640px)
     @media (max-width: 640px) {
         padding: 40px 0;
         
         .service-header {
             margin-bottom: 30px;
-            
-            .service-label {
-                font-size: 12px;
-            }
+            padding: 0 15px;
             
             .service-title {
-                font-size: 24px;
+                font-size: 26px;
             }
             
             .service-subtitle {
-                font-size: 15px;
+                font-size: 14px;
             }
         }
         
@@ -3400,8 +3676,6 @@ input[type="button"],
                 display: none;
             }
         }
-        
-        // service-card responsive styles are now defined globally below
     }
 }
 
@@ -3969,12 +4243,16 @@ input[type="button"],
         margin-bottom: 60px;
         
         .news-label {
-            font-size: 14px;
-            font-weight: 600;
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(232, 89, 35, 0.12);
             color: #E85923;
+            font-size: 13px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+            border-radius: 100px;
+            margin-bottom: 20px;
         }
         
         .news-title {
@@ -4396,7 +4674,7 @@ input[type="button"],
 // Intro Page - Khối 2: Sứ mệnh
 .intro-mission {
     padding: 80px 0;
-    background: #fff;
+    background: #FFE5D1;
     position: relative;
     
     .mission-header {
@@ -4424,7 +4702,7 @@ input[type="button"],
     .mission-title {
         font-size: 42px;
         font-weight: 700;
-        color: #1a365d;
+        color: #000;
         line-height: 1.3;
         margin-bottom: 24px;
 
@@ -4682,7 +4960,7 @@ input[type="button"],
     .roadmap-title {
         font-size: 42px;
         font-weight: 700;
-        color: #1a365d;
+        color: #000;
         line-height: 1.3;
         margin-bottom: 0;
         
@@ -4904,7 +5182,7 @@ input[type="button"],
     .real-images-title {
         font-size: 42px;
         font-weight: 700;
-        color: #1a365d;
+        color: #000;
         line-height: 1.3;
         margin-bottom: 0;
         
@@ -4981,7 +5259,7 @@ input[type="button"],
         }
         
         .real-image-button {
-            background: linear-gradient(180deg, rgba(74, 144, 226, 0.9) 0%, rgba(26, 54, 93, 0.95) 100%);
+            background: linear-gradient(180deg, #E85923 0%, #ff8e37 100%);
             padding: 15px 20px;
             border-radius: 12px;
             text-align: center;
@@ -5044,7 +5322,7 @@ input[type="button"],
     .schedule-title {
         font-size: 42px;
         font-weight: 700;
-        color: #1a365d;
+        color: #000;
         line-height: 1.3;
         margin-bottom: 20px;
         
@@ -5448,7 +5726,7 @@ input[type="button"],
     .lecturers-title {
         font-size: 42px;
         font-weight: 700;
-        color: #1a365d;
+        color: #000;
         line-height: 1.3;
         margin-bottom: 20px;
         
@@ -6846,7 +7124,7 @@ input[type="button"],
     .heading-1 {
         font-size: 28px;
         font-weight: 700;
-        color: #1a365d;
+        color: #000;
         margin-bottom: 30px;
         
         @media (max-width: 640px) {
@@ -7457,14 +7735,33 @@ input[type="button"],
     gap: 30px;
     margin-bottom: 40px;
     
-    @media (max-width: 960px) {
-        grid-template-columns: repeat(2, 1fr);
+    // Large Tablet & Small Desktop (1024-1279px) - 3 cột
+    @media (max-width: 1279px) and (min-width: 1024px) {
+        gap: 25px;
+    }
+    
+    // Tablet Landscape (768-1023px) - 3 cột
+    @media (max-width: 1023px) and (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
         gap: 20px;
     }
     
-    @media (max-width: 640px) {
+    // Tablet Portrait (641-767px) - 2 cột
+    @media (max-width: 767px) and (min-width: 641px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+    
+    // Mobile Landscape (481-640px) - 2 cột
+    @media (max-width: 640px) and (min-width: 481px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    // Mobile Portrait (< 480px) - 1 cột
+    @media (max-width: 480px) {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 15px;
     }
 }
 
@@ -7657,34 +7954,88 @@ input[type="button"],
     }
     
     // Responsive styles
-    @media (max-width: 960px) {
+    // Large screens (1024-1279px) - Giảm padding
+    @media (max-width: 1279px) and (min-width: 1024px) {
+        padding: 25px;
+        
+        .service-card-title {
+            font-size: 20px;
+        }
+        
+        .service-card-image {
+            min-height: 280px;
+        }
+    }
+    
+    // Tablet & Medium (768-1023px) - Flexible layout
+    @media (max-width: 1023px) and (min-width: 768px) {
+        padding: 25px;
+        
         .service-card-content {
-            flex-direction: column;
             gap: 20px;
         }
         
         .service-card-image {
-            width: 100%;
+            width: 45%;
+            min-height: 250px;
+        }
+        
+        .service-card-title {
+            font-size: 19px;
+        }
+        
+        .service-price {
+            font-size: 26px;
         }
     }
     
+    // Tablet Portrait (641-767px) - Stack vertical
+    @media (max-width: 767px) and (min-width: 641px) {
+        padding: 22px;
+        
+        .service-card-content {
+            flex-direction: column;
+            gap: 18px;
+        }
+        
+        .service-card-image {
+            width: 100%;
+            min-height: 220px;
+            height: 220px;
+        }
+        
+        .service-card-title {
+            font-size: 19px;
+        }
+        
+        .service-price {
+            font-size: 25px;
+        }
+    }
+    
+    // Mobile (< 640px) - Compact vertical
     @media (max-width: 640px) {
         padding: 20px;
         
         .service-card-content {
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
         
         .service-card-image {
             width: 100%;
-            max-height: 175px;
-            min-height: auto;
-            height: 175px;
+            max-height: 180px;
+            min-height: 180px;
+            height: 180px;
         }
         
         .service-card-title {
-            font-size: 18px;
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
+        
+        .service-card-description {
+            font-size: 13px;
         }
         
         .service-price {
@@ -7708,14 +8059,27 @@ input[type="button"],
     gap: 30px;
     margin-bottom: 40px;
     
-    @media (max-width: 960px) {
+    // Large Tablet & Small Desktop (1024-1279px)
+    @media (max-width: 1279px) and (min-width: 1024px) {
+        gap: 25px;
+    }
+    
+    // Tablet Landscape & Medium screens (768-1023px) - 2 cột
+    @media (max-width: 1023px) and (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    // Tablet Portrait (641-767px) - 1 cột
+    @media (max-width: 767px) and (min-width: 641px) {
         grid-template-columns: 1fr;
         gap: 20px;
     }
     
+    // Mobile (< 640px) - 1 cột
     @media (max-width: 640px) {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 15px;
     }
 }
 
@@ -9002,17 +9366,32 @@ input[type="button"],
 
 @media (max-width: 767px) {
     .fixed-contact-buttons {
-        right: 10px;
-        bottom: 30px !important;
-        gap: 6px;
+        position: fixed;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 12px 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
     }
     
     .contact-btn {
-        width: 45px;
-        height: 45px;
+        width: 50px;
+        height: 50px;
         
         i {
-            font-size: 18px;
+            font-size: 20px;
+        }
+        
+        &:hover {
+            transform: translateY(-3px);
         }
     }
 }

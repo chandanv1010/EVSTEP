@@ -17,9 +17,9 @@
                 <div class="vstep-header">
                     <div class="vstep-label wow fadeInDown" data-wow-duration="0.6s" data-wow-delay="0.1s">HIỂU ĐÚNG KỲ THI</div>
                     <h2 class="vstep-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">{{ $postName }}</h2>
-                    <p class="vstep-description wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.3s">
+                    <div class="vstep-description wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.3s">
                         {!! $postDescription !!}
-                    </p>
+                    </div>
                 </div>
                 
                 {{-- Main Content --}}
@@ -305,7 +305,7 @@
                            <img src="{{ asset('frontend/resources/img/form-bg.png') }}" alt="Promo Graphic">
                         </div>
                         <div class="promo-text">
-                            <p>Hơn 10000 hv đã thành công lấy chứng chỉ tiếng anh A2 B1 B2</p>
+                            <p>Hơn <strong style="color: #ED1B24; font-weight: 700;">10.000</strong> hv đã thành công lấy chứng chỉ tiếng anh <strong style="color: #ED1B24; font-weight: 700;">A1-A2-B1-B2</strong></p>
                             <p>cấp tốc để phục vụ cho học tập, công việc.</p>
                             <p class="promo-question">Bạn có muốn trở thành người tiếp theo?</p>
                         </div>
