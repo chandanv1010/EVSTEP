@@ -1666,6 +1666,43 @@ input[type="button"],
             align-items: center;
             gap: 15px;
             
+            .mobile-contacts {
+                display: none;
+                gap: 15px;
+                margin-right: 10px;
+                
+                // Hiển thị khi màn hình từ 600px trở lên
+                @media (min-width: 600px) {
+                    display: flex;
+                }
+                
+                .mobile-contact-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    
+                    svg {
+                        width: 15px;
+                        height: 15px;
+                        color: #E85923;
+                        flex-shrink: 0;
+                    }
+                    
+                    span {
+                        font-size: 13px;
+                        font-weight: 400;
+                        color: #333;
+                        white-space: nowrap;
+                    }
+                    
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                }
+            }
+            
             .cart-link,
             .menu-link {
                 a {
@@ -2081,6 +2118,7 @@ input[type="button"],
             justify-content: space-between;
             flex-wrap: wrap;
             margin-left: 0;
+            align-items: stretch;
             
             > * {
                 padding-left: 0;
@@ -2236,8 +2274,7 @@ input[type="button"],
                 width: 100%;
                 border-radius: 20px;
                 padding: 30px 20px;
-                height: auto;
-                min-height: 380px;
+                height: 100%;
                 
                 .card-number {
                     font-size: 36px;
@@ -2288,8 +2325,7 @@ input[type="button"],
                 width: 100%;
                 border-radius: 16px;
                 padding: 25px 20px;
-                height: auto;
-                min-height: 350px;
+                height: 100%;
                 
                 .card-number {
                     font-size: 32px;
@@ -2340,8 +2376,7 @@ input[type="button"],
                 width: 100%;
                 border-radius: 12px;
                 padding: 20px 15px;
-                height: auto;
-                min-height: 320px;
+                height: 100%;
                 
                 .card-number {
                     font-size: 28px;
@@ -2393,7 +2428,7 @@ input[type="button"],
                 width: 100%;
                 border-radius: 12px;
                 padding: 25px 20px;
-                height: auto;
+                height: 100%;
                 
                 .card-number {
                     font-size: 32px;
@@ -3255,11 +3290,15 @@ input[type="button"],
                 }
             }
             
-            .promo-text p {
-                font-size: 14px;
+            .promo-text {
+                margin-top: 0;
                 
-                &.promo-question {
-                    font-size: 16px;
+                p {
+                    font-size: 14px;
+                    
+                    &.promo-question {
+                        font-size: 16px;
+                    }
                 }
             }
         }
@@ -9366,32 +9405,17 @@ input[type="button"],
 
 @media (max-width: 767px) {
     .fixed-contact-buttons {
-        position: fixed;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        padding: 12px 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        gap: 10px;
-        background: rgba(255, 255, 255, 0.75);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        z-index: 999;
+        right: 10px;
+        bottom: 30px;
+        gap: 6px;
     }
     
     .contact-btn {
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         
         i {
-            font-size: 20px;
-        }
-        
-        &:hover {
-            transform: translateY(-3px);
+            font-size: 18px;
         }
     }
 }
