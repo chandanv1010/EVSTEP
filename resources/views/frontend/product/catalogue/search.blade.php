@@ -17,10 +17,57 @@
                         <div class="search-section mb40">
                             <h3 class="section-title mb20">Khóa học ({{ $products->total() }})</h3>
                             <div class="product-list mb30">
-                                <div class="uk-grid uk-grid-medium">
+                                <div class="courses-grid">
                                     @foreach($products as $product)
-                                        <div class="uk-width-small-1-2 uk-width-medium-1-4 mb20">
-                                            @include('frontend.component.p-item', ['product'  => $product])
+                                        @php
+                                            $productLanguage = $product->languages->first();
+                                            $productName = $productLanguage->pivot->name ?? '';
+                                            $productCanonical = write_url($productLanguage->pivot->canonical ?? '');
+                                            $productDescription = $productLanguage->pivot->description ?? '';
+                                            $productPrice = number_format($product->price ?? 0, 0, ',', '.');
+                                            $productImage = $product->image ?? '';
+                                            $totalLesson = $product->total_lesson ?? 0;
+                                            $duration = $product->duration ?? 0;
+                                            $productRate = $product->rate ?? '';
+                                        @endphp
+                                        <div class="course-card wow fadeInUp" data-wow-duration="0.6s">
+                                            <div class="course-image">
+                                                @if($productImage)
+                                                    <img src="{{ asset($productImage) }}" alt="{{ $productName }}">
+                                                @else
+                                                    <div class="image-placeholder">
+                                                        <div class="vstep-logo">VSTEP</div>
+                                                    </div>
+                                                @endif
+                                                @if($productRate)
+                                                    <div class="course-level">{{ $productRate }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="course-content">
+                                                <h3 class="course-title">{{ $productName }}</h3>
+                                                <div class="course-info">
+                                                    @if($totalLesson > 0)
+                                                        <div class="info-item">
+                                                            <i class="fa fa-book"></i>
+                                                            <span>{{ $totalLesson }} bài học</span>
+                                                        </div>
+                                                    @endif
+                                                    @if($duration > 0)
+                                                        <div class="info-item">
+                                                            <i class="fa fa-calendar"></i>
+                                                            <span>{{ $duration }} tuần</span>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                @if($productDescription)
+                                                    <div class="course-description">{{ \Illuminate\Support\Str::limit(strip_tags($productDescription), 100) }}</div>
+                                                @endif
+                                                <div class="course-price">{{ $productPrice }}₫</div>
+                                                <div class="course-buttons">
+                                                    <a href="{{ $productCanonical }}" class="btn btn-buy">Xem chi tiết</a>
+                                                    <button type="button" class="btn btn-cart addToCart" data-id="{{ $product->id }}">Mua ngay</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     @endforeach
                                 </div>
