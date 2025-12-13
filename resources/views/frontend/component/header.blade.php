@@ -169,7 +169,7 @@
 </div>
 
 <div class="mobile-header uk-hidden-large">
-    <div class="mobile-upper">
+    <div class="mobile-upper" data-uk-sticky>
         <div class="uk-container uk-container-center">
             <div class="uk-flex uk-flex-middle uk-flex-space-between">
                 <div class="mobile-logo">
@@ -212,7 +212,7 @@
             </div>
         </div>
     </div>
-    <div class="navigation-mobile" data-uk-sticky>
+    <div class="navigation-mobile" >
         <div class="mobile-nav-wrapper">
             <ul class="uk-flex uk-flex-middle uk-list uk-clearfix uk-navbar-nav main-menu">
                 @if(isset($menu['mobile-menu']))

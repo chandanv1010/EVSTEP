@@ -1235,8 +1235,8 @@ input[type="button"],
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        width: 60px;
-        height: 60px;
+        width: 45px;
+        height: 45px;
         background: #fff;
         border-radius: 50%;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
@@ -1247,6 +1247,7 @@ input[type="button"],
         align-items: center;
         justify-content: center;
         border: 2px solid transparent;
+        margin-top: 0 !important;
         
         &::after {
             font-size: 24px;
@@ -1290,7 +1291,7 @@ input[type="button"],
     }
     
     .swiper-button-prev {
-        left: -80px;
+        left: 10px;
         
         &::after {
             content: '←';
@@ -1304,7 +1305,7 @@ input[type="button"],
     }
     
     .swiper-button-next {
-        right: -80px;
+        right: 10px;
         
         &::after {
             content: '→';
@@ -3491,13 +3492,16 @@ input[type="button"],
         margin-bottom: 60px;
         
         .courses-label {
-            display: none;
-            font-size: 20px;
-            font-weight: 600;
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(232, 89, 35, 0.12);
             color: #E85923;
+            font-size: 13px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+            border-radius: 100px;
+            margin-bottom: 20px;
         }
         
         .courses-title {
@@ -3517,11 +3521,111 @@ input[type="button"],
         }
     }
     
-    .courses-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
+    .courses-slider {
+        position: relative;
+        padding: 0 90px;
         margin-bottom: 50px;
+        overflow: visible;
+        
+        .courses-swiper {
+            position: relative;
+            overflow: visible;
+            
+            .swiper-wrapper {
+                align-items: stretch;
+            }
+            
+            .swiper-slide {
+                height: auto;
+            }
+        }
+        
+        .courses-prev,
+        .courses-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+            height: 45px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+            z-index: 20;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+            margin-top: 0 !important;
+            
+            &::after {
+                font-size: 24px;
+                color: #E85923;
+                font-weight: 700;
+                transition: all 0.3s ease;
+            }
+            
+            &:hover {
+                background: linear-gradient(135deg, #E85923 0%, #FF6B35 100%);
+                box-shadow: 0 8px 24px rgba(232, 89, 35, 0.35);
+                transform: translateY(-50%) scale(1.1);
+                border-color: rgba(255, 255, 255, 0.3);
+                
+                &::after {
+                    color: #fff;
+                    transform: scale(1.1);
+                }
+            }
+            
+            &:active {
+                transform: translateY(-50%) scale(0.95);
+            }
+            
+            &.swiper-button-disabled {
+                opacity: 0.35;
+                cursor: not-allowed;
+                
+                &:hover {
+                    transform: translateY(-50%) scale(1);
+                    background: #fff;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+                    
+                    &::after {
+                        color: #E85923;
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+        
+        .courses-prev {
+            left: 0;
+            
+            &::after {
+                content: '←';
+            }
+            
+            &:hover {
+                &::after {
+                    transform: translateX(-2px) scale(1.1);
+                }
+            }
+        }
+        
+        .courses-next {
+            right: 0;
+            
+            &::after {
+                content: '→';
+            }
+            
+            &:hover {
+                &::after {
+                    transform: translateX(2px) scale(1.1);
+                }
+            }
+        }
     }
     
     // course-card styles are now defined globally below (see end of file)
@@ -3564,9 +3668,26 @@ input[type="button"],
             }
         }
         
-        .courses-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+        .courses-slider {
+            padding: 0 70px;
+            
+            .courses-prev,
+            .courses-next {
+                width: 50px;
+                height: 50px;
+                
+                &::after {
+                    font-size: 20px;
+                }
+            }
+            
+            .courses-prev {
+                left: 0;
+            }
+            
+            .courses-next {
+                right: 0;
+            }
         }
     }
     
@@ -3589,9 +3710,26 @@ input[type="button"],
             }
         }
         
-        .courses-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
+        .courses-slider {
+            padding: 0 60px;
+            
+            .courses-prev,
+            .courses-next {
+                width: 45px;
+                height: 45px;
+                
+                &::after {
+                    font-size: 18px;
+                }
+            }
+            
+            .courses-prev {
+                left: 10px;
+            }
+            
+            .courses-next {
+                right: 10px;
+            }
         }
         
         .course-card {
@@ -3661,9 +3799,13 @@ input[type="button"],
     
     .service-slider {
         position: relative;
-        padding: 0 80px;
+        padding: 0 90px;
+        overflow: visible;
         
         .service-swiper {
+            position: relative;
+            overflow: visible;
+            
             .swiper-wrapper {
                 align-items: stretch;
             }
@@ -3678,19 +3820,19 @@ input[type="button"],
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 60px;
-            height: 60px;
+            width: 45px;
+            height: 45px;
             background: #fff;
             border-radius: 50%;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-            z-index: 10;
+            z-index: 20;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid transparent;
-            margin-top: 0;
+            margin-top: 0 !important;
             
             &::after {
                 font-size: 24px;
@@ -3710,10 +3852,30 @@ input[type="button"],
                     transform: scale(1.1);
                 }
             }
+            
+            &:active {
+                transform: translateY(-50%) scale(0.95);
+            }
+            
+            &.swiper-button-disabled {
+                opacity: 0.35;
+                cursor: not-allowed;
+                
+                &:hover {
+                    transform: translateY(-50%) scale(1);
+                    background: #fff;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+                    
+                    &::after {
+                        color: #E85923;
+                        transform: scale(1);
+                    }
+                }
+            }
         }
         
         .service-prev {
-            left: -80px;
+            left: 0;
             
             &::after {
                 content: '←';
@@ -3727,7 +3889,7 @@ input[type="button"],
         }
         
         .service-next {
-            right: -80px;
+            right: 0;
             
             &::after {
                 content: '→';
@@ -3772,7 +3934,7 @@ input[type="button"],
         }
         
         .service-slider {
-            padding: 0 50px;
+            padding: 0 70px;
             
             .service-prev,
             .service-next {
@@ -3785,11 +3947,11 @@ input[type="button"],
             }
             
             .service-prev {
-                left: -60px;
+                left: 0;
             }
             
             .service-next {
-                right: -60px;
+                right: 0;
             }
         }
     }
@@ -3811,7 +3973,7 @@ input[type="button"],
         }
         
         .service-slider {
-            padding: 0 20px;
+            padding: 0 60px;
             
             .service-prev,
             .service-next {
@@ -3898,26 +4060,32 @@ input[type="button"],
     
     .partners-slider {
         position: relative;
+        padding: 0 90px;
+        overflow: visible;
         
+        .partners-swiper {
+            position: relative;
+            overflow: visible;
+        }
         
         .partners-prev,
         .partners-next {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 60px;
-            height: 60px;
+            width: 45px;
+            height: 45px;
             background: #fff;
             border-radius: 50%;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-            z-index: 10;
+            z-index: 20;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid transparent;
-            margin-top: 0;
+            margin-top: 0 !important;
             
             &::after {
                 font-size: 24px;
@@ -3937,10 +4105,30 @@ input[type="button"],
                     transform: scale(1.1);
                 }
             }
+            
+            &:active {
+                transform: translateY(-50%) scale(0.95);
+            }
+            
+            &.swiper-button-disabled {
+                opacity: 0.35;
+                cursor: not-allowed;
+                
+                &:hover {
+                    transform: translateY(-50%) scale(1);
+                    background: #fff;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+                    
+                    &::after {
+                        color: #E85923;
+                        transform: scale(1);
+                    }
+                }
+            }
         }
         
         .partners-prev {
-            left: -80px;
+            left: 0;
             
             &::after {
                 content: '←';
@@ -3954,7 +4142,7 @@ input[type="button"],
         }
         
         .partners-next {
-            right: -80px;
+            right: 0;
             
             &::after {
                 content: '→';
@@ -4038,6 +4226,7 @@ input[type="button"],
         }
         
         .partners-slider {
+            padding: 0 70px;
             
             .partners-prev,
             .partners-next {
@@ -4050,11 +4239,11 @@ input[type="button"],
             }
             
             .partners-prev {
-                left: 10px;
+                left: 0;
             }
             
             .partners-next {
-                right: 10px;
+                right: 0;
             }
         }
     }
@@ -4079,6 +4268,7 @@ input[type="button"],
         }
         
         .partners-slider {
+            padding: 0 60px;
             
             .partners-prev,
             .partners-next {
@@ -4158,11 +4348,14 @@ input[type="button"],
     
     .feedback-slider {
         position: relative;
+        padding: 0 90px;
+        overflow: visible;
         
         .feedback-swiper {
+            position: relative;
             width: 100%;
             height: auto;
-            overflow: hidden;
+            overflow: visible;
             
             .swiper-wrapper {
                 align-items: stretch;
@@ -4178,19 +4371,19 @@ input[type="button"],
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 60px;
-            height: 60px;
+            width: 45px;
+            height: 45px;
             background: #fff;
             border-radius: 50%;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-            z-index: 10;
+            z-index: 20;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid transparent;
-            margin-top: 0;
+            margin-top: 0 !important;
             
             &::after {
                 font-size: 24px;
@@ -4210,10 +4403,30 @@ input[type="button"],
                     transform: scale(1.1);
                 }
             }
+            
+            &:active {
+                transform: translateY(-50%) scale(0.95);
+            }
+            
+            &.swiper-button-disabled {
+                opacity: 0.35;
+                cursor: not-allowed;
+                
+                &:hover {
+                    transform: translateY(-50%) scale(1);
+                    background: #fff;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+                    
+                    &::after {
+                        color: #E85923;
+                        transform: scale(1);
+                    }
+                }
+            }
         }
         
         .feedback-prev {
-            left: -80px;
+            left: 0;
             
             &::after {
                 content: '←';
@@ -4227,7 +4440,7 @@ input[type="button"],
         }
         
         .feedback-next {
-            right: -80px;
+            right: 0;
             
             &::after {
                 content: '→';
@@ -4353,6 +4566,8 @@ input[type="button"],
         }
         
         .feedback-slider {
+            padding: 0 70px;
+            
             .feedback-prev,
             .feedback-next {
                 width: 50px;
@@ -4364,11 +4579,11 @@ input[type="button"],
             }
             
             .feedback-prev {
-                left: 10px;
+                left: 0;
             }
             
             .feedback-next {
-                right: 10px;
+                right: 0;
             }
         }
     }
@@ -4846,11 +5061,16 @@ input[type="button"],
 // Custom styles can be added below
 // Add your custom SCSS code here
 
-// Hide Swiper navigation icon (SVG) on screens below 768px
-@media (max-width: 767px) {
-    .swiper-navigation-icon {
-        display: none !important;
-    }
+// Hide Swiper navigation icon (SVG) - Global
+.swiper-navigation-icon {
+    display: none !important;
+}
+
+// Swiper container overflow hidden - Global
+.swiper-container,
+.swiper {
+    overflow: hidden !important;
+    padding: 0 25px;
 }
 
 // Intro Page - Khối 2: Sứ mệnh
@@ -8863,7 +9083,10 @@ input[type="button"],
 // Panel VSTEP & Page Setup - Black text and checkbox/radio styling
 .panel-vstep,
 .panel-vstep.page-setup,
-.page-setup.panel-vstep {
+.page-setup.panel-vstep,
+.panel-vstep-courses.page-setup,
+.page-setup.panel-vstep-courses {
+    background-color: #E6F2FF;
     color: #000;
     
     // All text elements should be black (except those already styled)

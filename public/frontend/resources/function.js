@@ -322,6 +322,37 @@
 		});
 	}
 
+	HT.coursesSwiper = () => {
+		var coursesContainer = document.querySelector(".panel-vstep-courses .courses-swiper");
+		if (!coursesContainer) return;
+		
+		var slides = coursesContainer.querySelectorAll('.swiper-slide');
+		var slideCount = slides.length;
+		// Chỉ bật loop nếu có ít nhất 4 slides (vì slidesPerView: 3)
+		var enableLoop = slideCount >= 4;
+		
+		var swiper = new Swiper(".panel-vstep-courses .courses-swiper", {
+			loop: enableLoop,
+			spaceBetween: 30,
+			slidesPerView: 1, // Default: 1 slide on mobile
+			breakpoints: {
+				640: {
+					slidesPerView: 1,
+				},
+				960: {
+					slidesPerView: 2,
+				},
+				1280: {
+					slidesPerView: 3,
+				}
+			},
+			navigation: {
+				nextEl: '.panel-vstep-courses .courses-next',
+				prevEl: '.panel-vstep-courses .courses-prev',
+			},
+		});
+	}
+
 	HT.feedbackSwiper = () => {
 		var feedbackContainer = document.querySelector(".panel-feedback .feedback-swiper");
 		if (!feedbackContainer) return;
@@ -1574,6 +1605,7 @@
         HT.filterCourse()
         HT.serviceSwiper()
         HT.vstepServiceSwiper()
+        HT.coursesSwiper()
         HT.feedbackSwiper()
         HT.partnersSwiper()
         HT.realImagesSwiper()

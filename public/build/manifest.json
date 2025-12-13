@@ -28,12 +28,12 @@
     "src": "public/frontend/resources/img/Vector.png"
   },
   "resources/css/app.scss": {
-    "file": "assets/app-9bb88e6a.css",
+    "file": "assets/app-c4854653.css",
     "isEntry": true,
     "src": "resources/css/app.scss"
   },
   "resources/js/app.js": {
-    "file": "assets/app-e1786f68.js",
+    "file": "assets/app-e4ef7353.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
