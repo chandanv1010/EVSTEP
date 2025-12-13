@@ -5073,6 +5073,12 @@ input[type="button"],
     padding: 0 25px;
 }
 
+// Slide chính không có padding
+.panel-slide .swiper-container,
+.panel-slide .swiper {
+    padding: 0 !important;
+}
+
 // Intro Page - Khối 2: Sứ mệnh
 .intro-mission {
     padding: 80px 0;
