@@ -3,9 +3,10 @@
 @php
     $breadcrumbImage = !empty($postCatalogue->album) ? json_decode($postCatalogue->album, true)[0] : asset('userfiles/image/system/breadcrumb.png');
 @endphp
-@include('frontend.component.breadcrumb', [
+@include('frontend.component.breadcrumb-hero', [
     'model' => $post,
     'breadcrumb' => $breadcrumb,
+    'title' => $post->languages->first()->pivot->name ?? ($post->name ?? ''),
 ])
 <div class="post-detail">
     <div class="product-catalogue-wrapper post-container">

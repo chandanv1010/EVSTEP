@@ -786,3 +786,17 @@ if (!function_exists('calculateCourses')) {
         return $chapters;
     }
 }
+
+// Decode HTML entities (even double-encoded) and strip tags
+if (!function_exists('clean_text')) {
+    function clean_text($value = null): string {
+        if ($value === null) return '';
+        $text = (string) $value;
+        // Some contents are double-encoded, decode twice to be safe
+        $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        $text = strip_tags($text);
+        $text = preg_replace('/\s+/u', ' ', $text);
+        return trim($text);
+    }
+}

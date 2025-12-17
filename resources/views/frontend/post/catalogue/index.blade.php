@@ -4,22 +4,14 @@
         $catalogueName = $postCatalogue->languages->first()->pivot->name ?? $postCatalogue->name ?? '';
         $catalogueDescription = $postCatalogue->languages->first()->pivot->description ?? $postCatalogue->description ?? '';
     @endphp
-    @include('frontend.component.breadcrumb', [
+    @include('frontend.component.breadcrumb-hero', [
         'model' => $postCatalogue,
         'breadcrumb' => $breadcrumb ?? [],
+        'title' => $catalogueName,
+        'subtitle' => !empty($catalogueDescription) ? \Illuminate\Support\Str::limit(clean_text($catalogueDescription), 140) : null,
     ])
     <div class="post-catalogue-page page-setup">
         <div class="uk-container uk-container-center">
-            {{-- Header --}}
-            <div class="catalogue-header">
-                <h1 class="catalogue-title">{{ $catalogueName }}</h1>
-                @if($catalogueDescription)
-                    <div class="catalogue-description">
-                        {!! $catalogueDescription !!}
-                    </div>
-                @endif
-            </div>
-            
             {{-- Posts Grid --}}
             @if($posts->isNotEmpty())
                 <div class="posts-grid">

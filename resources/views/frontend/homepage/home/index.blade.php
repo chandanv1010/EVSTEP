@@ -89,7 +89,7 @@
                 <div class="suitable-header">
                     <div class="suitable-label wow fadeInDown" data-wow-duration="0.6s" data-wow-delay="0.1s">Phù Hợp với ai?</div>
                     <h2 class="suitable-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">{{ $catalogueName }}</h2>
-                    <p class="suitable-subtitle wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.3s">{{ $catalogueDescription }}</p>
+                    <p class="suitable-subtitle wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.3s">{{ clean_text($catalogueDescription) }}</p>
                 </div>
                 
                 @if($posts->isNotEmpty())
@@ -335,61 +335,61 @@
                 <div class="courses-header">
                     <div class="courses-label wow fadeInDown" data-wow-duration="0.6s" data-wow-delay="0.1s">KHÓA HỌC</div>
                     <h2 class="courses-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">Các Khóa Học VSTEP</h2>
-                    <p class="courses-subtitle wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.3s">{{ $catalogueDescription }}</p>
+                    <p class="courses-subtitle wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.3s">{{ clean_text($catalogueDescription) }}</p>
                 </div>
                 
                 @if($courses->isNotEmpty())
                     <div class="courses-slider">
                         <div class="swiper-container courses-swiper">
                             <div class="swiper-wrapper">
-                                @foreach($courses as $course)
-                                    @php
-                                        $courseLanguage = ($course->languages instanceof \Illuminate\Support\Collection) 
-                                            ? $course->languages->first() 
-                                            : (is_array($course->languages) ? (object)($course->languages[0] ?? []) : ($course->languages ?? (object)[]));
-                                        $courseName = $courseLanguage->name ?? '';
-                                        $courseDescription = $courseLanguage->description ?? '';
-                                        $courseCanonical = write_url($courseLanguage->canonical ?? '');
-                                        $coursePrice = number_format($course->price ?? 0, 0, ',', '.');
-                                        $courseRate = $course->rate ?? '';
-                                        $totalLesson = $course->total_lesson ?? 0;
-                                        $duration = $course->duration ?? 0;
-                                        $courseImage = $course->image ?? '';
-                                    @endphp
+                        @foreach($courses as $course)
+                            @php
+                                $courseLanguage = ($course->languages instanceof \Illuminate\Support\Collection) 
+                                    ? $course->languages->first() 
+                                    : (is_array($course->languages) ? (object)($course->languages[0] ?? []) : ($course->languages ?? (object)[]));
+                                $courseName = $courseLanguage->name ?? '';
+                                $courseDescription = $courseLanguage->description ?? '';
+                                $courseCanonical = write_url($courseLanguage->canonical ?? '');
+                                $coursePrice = number_format($course->price ?? 0, 0, ',', '.');
+                                $courseRate = $course->rate ?? '';
+                                $totalLesson = $course->total_lesson ?? 0;
+                                $duration = $course->duration ?? 0;
+                                $courseImage = $course->image ?? '';
+                            @endphp
                                     <div class="swiper-slide">
-                                        <div class="course-card wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="{{ ($loop->index * 0.1) }}s">
-                                            <div class="course-image">
-                                                @if($courseImage)
-                                                    <img src="{{ $courseImage }}" alt="{{ $courseName }}">
-                                                @else
-                                                    <div class="image-placeholder">
-                                                        <div class="vstep-logo">VSTEP</div>
-                                                    </div>
-                                                @endif
-                                                <div class="course-level">{{ $courseRate }}</div>
-                                            </div>
-                                            <div class="course-content">
-                                                <h3 class="course-title">{{ $courseName }}</h3>
-                                                <div class="course-info">
-                                                    <div class="info-item">
-                                                        <i class="fa fa-book"></i>
-                                                        <span>{{ $totalLesson }} bài học</span>
-                                                    </div>
-                                                    <div class="info-item">
-                                                        <i class="fa fa-calendar"></i>
-                                                        <span>{{ $duration }} tuần</span>
-                                                    </div>
-                                                </div>
-                                                <div class="course-description">{!! $courseDescription !!}</div>
-                                                <div class="course-price">{{ $coursePrice }}₫</div>
-                                                <div class="course-buttons">
-                                                    <a href="{{ $courseCanonical }}" class="btn btn-buy">Xem chi tiết</a>
-                                                    <button type="button" class="btn btn-cart addToCart" data-id="{{ $course->id }}">Mua ngay</button>
-                                                </div>
-                                            </div>
+                            <div class="course-card wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="{{ ($loop->index * 0.1) }}s">
+                                <div class="course-image">
+                                    @if($courseImage)
+                                        <img src="{{ $courseImage }}" alt="{{ $courseName }}">
+                                    @else
+                                        <div class="image-placeholder">
+                                            <div class="vstep-logo">VSTEP</div>
+                                        </div>
+                                    @endif
+                                    <div class="course-level">{{ $courseRate }}</div>
+                                </div>
+                                <div class="course-content">
+                                    <h3 class="course-title">{{ $courseName }}</h3>
+                                    <div class="course-info">
+                                        <div class="info-item">
+                                            <i class="fa fa-book"></i>
+                                            <span>{{ $totalLesson }} bài học</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <i class="fa fa-calendar"></i>
+                                            <span>{{ $duration }} tuần</span>
                                         </div>
                                     </div>
-                                @endforeach
+                                    <div class="course-description">{!! $courseDescription !!}</div>
+                                    <div class="course-price">{{ $coursePrice }}₫</div>
+                                    <div class="course-buttons">
+                                        <a href="{{ $courseCanonical }}" class="btn btn-buy">Xem chi tiết</a>
+                                        <button type="button" class="btn btn-cart addToCart" data-id="{{ $course->id }}">Mua ngay</button>
+                                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                             </div>
                             <div class="swiper-button-prev courses-prev"></div>
                             <div class="swiper-button-next courses-next"></div>
@@ -419,7 +419,7 @@
                 <div class="service-header">
                     <div class="service-label wow fadeInDown" data-wow-duration="0.6s" data-wow-delay="0.1s">DỊCH VỤ</div>
                     <h2 class="service-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">{{ $catalogueName }}</h2>
-                    <p class="service-subtitle wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.3s">{{ $catalogueDescription }}</p>
+                    <p class="service-subtitle wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.3s">{{ clean_text($catalogueDescription) }}</p>
                 </div>
                 
                 @if($services->isNotEmpty())

@@ -31,7 +31,11 @@
 @extends('frontend.homepage.layout')
 @section('content')
     {{-- Breadcrumb --}}
-    @include('frontend.component.breadcrumb', ['model' => $product, 'breadcrumb' => $breadcrumb])
+    @include('frontend.component.breadcrumb-hero', [
+        'model' => $product,
+        'breadcrumb' => $breadcrumb,
+        'title' => $name,
+    ])
     
     <div class="product-detail-page page-wrapper">
         <div class="uk-container uk-container-center">
@@ -340,7 +344,7 @@
                                         <div class="related-content">
                                             <h3 class="related-name">{{ $relatedName }}</h3>
                                             @if($relatedDescription)
-                                                <p class="related-description">{{ \Illuminate\Support\Str::limit(strip_tags($relatedDescription), 80) }}</p>
+                                                <p class="related-description">{{ \Illuminate\Support\Str::limit(clean_text($relatedDescription), 80) }}</p>
                                             @endif
                                             <div class="related-price">{{ $relatedPrice }}₫</div>
                                         </div>

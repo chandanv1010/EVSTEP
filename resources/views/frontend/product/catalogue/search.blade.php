@@ -60,7 +60,7 @@
                                                     @endif
                                                 </div>
                                                 @if($productDescription)
-                                                    <div class="course-description">{{ \Illuminate\Support\Str::limit(strip_tags($productDescription), 100) }}</div>
+                                                    <div class="course-description">{{ \Illuminate\Support\Str::limit(clean_text($productDescription), 100) }}</div>
                                                 @endif
                                                 <div class="course-price">{{ $productPrice }}₫</div>
                                                 <div class="course-buttons">
@@ -129,7 +129,7 @@
                                                         <a href="{{ write_url($post->canonical) }}">{{ $post->name }}</a>
                                                     </h4>
                                                     @if($post->description)
-                                                        <p class="post-excerpt">{{ \Illuminate\Support\Str::limit(strip_tags($post->description), 100) }}</p>
+                                                        <p class="post-excerpt">{{ \Illuminate\Support\Str::limit(clean_text($post->description), 100) }}</p>
                                                     @endif
                                                     <a href="{{ write_url($post->canonical) }}" class="post-read-more">Đọc thêm</a>
                                                 </div>

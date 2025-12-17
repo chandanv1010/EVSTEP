@@ -1,20 +1,15 @@
 @extends('frontend.homepage.layout')
 @section('content')
     {{-- Breadcrumb --}}
-    @include('frontend.component.breadcrumb', ['model' => $productCatalogue, 'breadcrumb' => $breadcrumb])
+    @include('frontend.component.breadcrumb-hero', [
+        'model' => $productCatalogue,
+        'breadcrumb' => $breadcrumb,
+        'title' => $productCatalogue->name,
+        'subtitle' => !empty($productCatalogue->description) ? \Illuminate\Support\Str::limit(clean_text($productCatalogue->description), 140) : null,
+    ])
     
     <div class="product-catalogue-page page-wrapper">
         <div class="uk-container uk-container-center">
-            {{-- Header --}}
-            <div class="catalogue-header">
-                <h1 class="catalogue-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">{{ $productCatalogue->name }}</h1>
-                @if($productCatalogue->description)
-                    <div class="catalogue-description wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.2s">
-                        {!! $productCatalogue->description !!}
-                    </div>
-                @endif
-            </div>
-            
             @php
                 // Phân biệt 2 loại danh mục
                 $catalogueName = strtolower($productCatalogue->name ?? '');
@@ -90,7 +85,7 @@
                                             </div>
                                         @endif
                                         @if($productDescription)
-                                            <p class="service-card-description">{{ \Illuminate\Support\Str::limit(strip_tags($productDescription), 150) }}</p>
+                                            <p class="service-card-description">{{ \Illuminate\Support\Str::limit(clean_text($productDescription), 150) }}</p>
                                         @endif
                                         <div class="service-price">{{ $productPrice }}₫ /combo</div>
                                     </div>
@@ -153,7 +148,7 @@
                                         @endif
                                     </div>
                                     @if($productDescription)
-                                        <div class="course-description">{{ \Illuminate\Support\Str::limit(strip_tags($productDescription), 100) }}</div>
+                                        <div class="course-description">{{ \Illuminate\Support\Str::limit(clean_text($productDescription), 100) }}</div>
                                     @endif
                                     <div class="course-price">{{ $productPrice }}₫</div>
                                     <div class="course-buttons">
