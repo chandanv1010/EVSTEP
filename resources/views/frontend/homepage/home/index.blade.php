@@ -255,27 +255,14 @@
     {{-- VSTEP CTA Section --}}
     @if(isset($widgets['vstep-cta']) && $widgets['vstep-cta'])
         @php
-            $ctaWidget = $widgets['vstep-cta'];
-            $ctaData = null;
-            
-            // Get description data
-            if (isset($ctaWidget->description) && is_array($ctaWidget->description)) {
-                // Get language ID - try $language variable first, then config, then default to 1
-                $langId = isset($language) ? $language : (config('apps.language.default') ?? 1);
-                $description = $ctaWidget->description[$langId] ?? ($ctaWidget->description[1] ?? null);
-                if ($description) {
-                    $ctaData = is_string($description) ? json_decode($description, true) : $description;
-                }
-            }
-            
-            // Default values if no data
-            $title = $ctaData['title'] ?? 'Sẵn sàng đạt chứng chỉ VSTEP chỉ sau';
-            $titleHighlight = $ctaData['title_highlight'] ?? '6-12 tuần?';
-            $subtitle = $ctaData['subtitle'] ?? 'Đăng ký ngay để nhận tư vấn miễn phí, test trình độ đầu vào và ưu đãi học phí lên tới 20% trong tháng 11.';
-            $button1Text = $ctaData['button_1_text'] ?? 'Đăng ký tư vấn';
-            $button1Link = $ctaData['button_1_link'] ?? '#';
-            $button2Text = $ctaData['button_2_text'] ?? 'Đặt mua khóa học';
-            $button2Link = $ctaData['button_2_link'] ?? '#';
+            // Lấy dữ liệu từ System config thay vì description
+            $title = $system['data_cta_title'] ?? 'Sẵn sàng đạt chứng chỉ VSTEP chỉ sau';
+            $titleHighlight = $system['data_cta_title_highlight'] ?? '6-12 tuần?';
+            $subtitle = $system['data_cta_subtitle'] ?? 'Đăng ký ngay để nhận tư vấn miễn phí, test trình độ đầu vào và ưu đãi học phí lên tới 20% trong tháng 11.';
+            $button1Text = $system['data_cta_button_1_text'] ?? 'Đăng ký tư vấn';
+            $button1Link = $system['data_cta_button_1_link'] ?? '#';
+            $button2Text = $system['data_cta_button_2_text'] ?? 'Đặt mua khóa học';
+            $button2Link = $system['data_cta_button_2_link'] ?? '#';
         @endphp
         <div class="panel-vstep-cta page-setup">
             <div class="cta-card wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">

@@ -179,6 +179,20 @@ class System{
                 'overview_item_4' => ['type' => 'textarea', 'label' => 'Đặc biệt - Ưu đãi'],
             ]
         ];
+
+        $data['data_cta'] = [
+            'label' => 'Cấu hình CTA VSTEP',
+            'description' => 'Cấu hình nội dung hiển thị trong khối CTA VSTEP trên trang chủ',
+            'value' => [
+                'title' => ['type' => 'text', 'label' => 'Tiêu đề dòng 1 (ví dụ: Sẵn sàng đạt chứng chỉ VSTEP chỉ sau)'],
+                'title_highlight' => ['type' => 'text', 'label' => 'Tiêu đề dòng 2 - Highlight (ví dụ: 6-12 tuần?)'],
+                'subtitle' => ['type' => 'textarea', 'label' => 'Mô tả phụ (ví dụ: Đăng ký ngay để nhận tư vấn miễn phí...)'],
+                'button_1_text' => ['type' => 'text', 'label' => 'Text nút 1 (ví dụ: Đăng ký tư vấn)'],
+                'button_1_link' => ['type' => 'text', 'label' => 'Link nút 1 (để # nếu mở popup)'],
+                'button_2_text' => ['type' => 'text', 'label' => 'Text nút 2 (ví dụ: Đặt mua khóa học)'],
+                'button_2_link' => ['type' => 'text', 'label' => 'Link nút 2'],
+            ]
+        ];
        
         return $data;
     }
