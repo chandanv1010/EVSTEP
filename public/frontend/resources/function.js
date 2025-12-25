@@ -1354,7 +1354,7 @@
         });
 
         // Đóng popup khi click nút close
-        $(document).on('click', '#close-register-popup', function(e) {
+        $(document).on('click', '#register-popup-close, #close-register-popup', function(e) {
             e.preventDefault();
             $('#register-popup').fadeOut(300);
             $('body').css('overflow', '');
@@ -1377,7 +1377,7 @@
         });
 
         // Submit form trong popup
-        $(document).on('submit', '#header-register-form', function(e) {
+        $(document).on('submit', '#header-register-form, #register-popup-form', function(e) {
             e.preventDefault();
             let _this = $(this);
             let formData = new FormData(_this[0]);
@@ -1409,32 +1409,57 @@
                             alert('Vui lòng kiểm tra lại thông tin!');
                         }
                     } else if (res.response && res.response.code === 10) {
+                        let messageEl = _this.find('.register-popup-message');
+                        let isPopupForm = _this.attr('id') === 'register-popup-form';
+                        if (messageEl.length) {
+                            messageEl.removeClass('error').addClass('success').text('Đăng ký thành công! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.').show();
+                        }
                         if (typeof toastr !== 'undefined') {
                             toastr.success(res.response.message || 'Đăng ký thành công!', 'Thông báo');
-                        } else {
+                        } else if (!messageEl.length) {
                             alert(res.response.message || 'Đăng ký thành công!');
                         }
                         _this[0].reset();
-                        $('#register-popup').fadeOut(300);
-                        $('body').css('overflow', '');
-                    } else {
-                        if (typeof toastr !== 'undefined') {
-                            toastr.error('Có lỗi xảy ra, vui lòng thử lại!', 'Lỗi');
+                        if (isPopupForm) {
+                            setTimeout(function() {
+                                $('#register-popup').fadeOut(300);
+                                $('body').css('overflow', '');
+                                if (messageEl.length) messageEl.hide();
+                            }, 2000);
                         } else {
-                            alert('Có lỗi xảy ra, vui lòng thử lại!');
+                            $('#register-popup').fadeOut(300);
+                            $('body').css('overflow', '');
+                        }
+                    } else {
+                        let messageEl = _this.find('.register-popup-message');
+                        let errorMsg = 'Có lỗi xảy ra, vui lòng thử lại!';
+                        if (messageEl.length) {
+                            messageEl.removeClass('success').addClass('error').text(errorMsg).show();
+                        }
+                        if (typeof toastr !== 'undefined') {
+                            toastr.error(errorMsg, 'Lỗi');
+                        } else if (!messageEl.length) {
+                            alert(errorMsg);
                         }
                     }
                 },
                 error: function(xhr) {
                     console.error("AJAX error:", xhr);
+                    let messageEl = _this.find('.register-popup-message');
+                    let errorMsg = 'Có lỗi xảy ra khi gửi yêu cầu!';
+                    if (messageEl.length) {
+                        messageEl.removeClass('success').addClass('error').text(errorMsg).show();
+                    }
                     if (typeof toastr !== 'undefined') {
-                        toastr.error('Có lỗi xảy ra khi gửi yêu cầu!', 'Lỗi');
-                    } else {
-                        alert('Có lỗi xảy ra khi gửi yêu cầu!');
+                        toastr.error(errorMsg, 'Lỗi');
+                    } else if (!messageEl.length) {
+                        alert(errorMsg);
                     }
                 },
                 complete: function() {
-                    _this.find('button[type="submit"]').attr('disabled', false).text('Đăng ký ngay');
+                    let isPopupForm = _this.attr('id') === 'register-popup-form';
+                    let submitText = isPopupForm ? 'ĐĂNG KÝ NGAY' : 'Đăng ký ngay';
+                    _this.find('button[type="submit"]').attr('disabled', false).text(submitText);
                     _this.find('.is-invalid').removeClass('is-invalid');
                     _this.find('.invalid-feedback').remove();
                 }

@@ -113,7 +113,7 @@
                                         </div>
                                         <h3 class="card-title">{{ $postName }}</h3>
                                         <p class="card-description">{{ $postDescription }}</p>
-                                        <a href="{{ $postCanonical }}" class="card-link">
+                                        <a href="#" class="card-link open-register-popup">
                                             → Học Ngay
                                         </a>
                                     </div>
