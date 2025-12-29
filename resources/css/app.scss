@@ -8190,11 +8190,44 @@ input[type="button"],
         }
         
         .course-price {
-            font-size: 28px;
-            font-weight: 700;
-            color: #E85923;
             margin-bottom: 20px;
             flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            
+            .price-old {
+                font-size: 18px;
+                font-weight: 400;
+                color: #999;
+                text-decoration: line-through;
+                line-height: 1.2;
+            }
+            
+            .price-sale {
+                font-size: 32px;
+                font-weight: 700;
+                color: #E85923;
+                line-height: 1.2;
+            }
+            
+            .price-save {
+                font-size: 16px;
+                font-weight: 500;
+                color: #00C896;
+                line-height: 1.2;
+            }
+            
+            .price-percent {
+                display: inline-block;
+                background: #dc3545;
+                color: #fff;
+                padding: 4px 10px;
+                border-radius: 4px;
+                font-size: 14px;
+                font-weight: 600;
+                margin-left: 10px;
+            }
         }
         
         .course-buttons {
@@ -8267,7 +8300,19 @@ input[type="button"],
             }
             
             .course-price {
-                font-size: 24px;
+                gap: 6px;
+                
+                .price-old {
+                    font-size: 16px;
+                }
+                
+                .price-sale {
+                    font-size: 24px;
+                }
+                
+                .price-save {
+                    font-size: 14px;
+                }
             }
             
             .course-buttons {
@@ -9232,9 +9277,31 @@ input[type="button"],
                     }
                     
                     .related-price {
-                        font-size: 20px;
-                        font-weight: 700;
-                        color: #E85923;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 6px;
+                        
+                        .price-old {
+                            font-size: 14px;
+                            font-weight: 400;
+                            color: #999;
+                            text-decoration: line-through;
+                            line-height: 1.2;
+                        }
+                        
+                        .price-sale {
+                            font-size: 20px;
+                            font-weight: 700;
+                            color: #E85923;
+                            line-height: 1.2;
+                        }
+                        
+                        .price-save {
+                            font-size: 14px;
+                            font-weight: 500;
+                            color: #00C896;
+                            line-height: 1.2;
+                        }
                     }
                 }
                 

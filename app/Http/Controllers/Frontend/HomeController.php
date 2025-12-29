@@ -61,7 +61,7 @@ class HomeController extends FrontendController
             ['keyword' => 'vstep-why', 'children' => true, 'object' => true],
             ['keyword' => 'vstep-advantages', 'children' => true, 'object' => true],
             ['keyword' => 'vstep-cta'],
-            ['keyword' => 'vstep-courses', 'children' => true, 'object' => true],
+            ['keyword' => 'vstep-courses', 'children' => true, 'object' => true, 'promotion' => true],
             ['keyword' => 'vstep-service', 'children' => true, 'object' => true],
             ['keyword' => 'vstep-feedback', 'object' => true],
             ['keyword' => 'vstep-news', 'object' => true],

@@ -327,8 +327,8 @@
                                     $relatedName = $relatedLanguage->pivot->name ?? '';
                                     $relatedDescription = $relatedLanguage->pivot->description ?? '';
                                     $relatedCanonical = write_url($relatedLanguage->pivot->canonical ?? '');
-                                    $relatedPrice = number_format($relatedProduct->price ?? 0, 0, ',', '.');
                                     $relatedImage = $relatedProduct->image ?? '';
+                                    $relatedPriceData = getPrice($relatedProduct);
                                 @endphp
                                 <div class="related-card wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="{{ ($loop->index * 0.1) + 0.5 }}s">
                                     <a href="{{ $relatedCanonical }}" class="related-link">
@@ -346,7 +346,15 @@
                                             @if($relatedDescription)
                                                 <p class="related-description">{{ \Illuminate\Support\Str::limit(clean_text($relatedDescription), 80) }}</p>
                                             @endif
-                                            <div class="related-price">{{ $relatedPrice }}₫</div>
+                                            <div class="related-price">
+                                                @if($relatedPriceData['priceSale'] > 0)
+                                                    <div class="price-old">{{ number_format($relatedPriceData['price'], 0, ',', '.') }}₫</div>
+                                                    <div class="price-sale">{{ number_format($relatedPriceData['priceSale'], 0, ',', '.') }}₫</div>
+                                                    <div class="price-save">Tiết kiệm: {{ number_format($relatedPriceData['price'] - $relatedPriceData['priceSale'], 0, ',', '.') }}₫</div>
+                                                @else
+                                                    <div class="price-sale">{{ number_format($relatedPriceData['price'], 0, ',', '.') }}₫</div>
+                                                @endif
+                                            </div>
                                         </div>
                                     </a>
                                 </div>

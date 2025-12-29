@@ -102,10 +102,29 @@ if(!function_exists('getPrice')){
             return $result;
         }
 
-        if(isset($product->promotions) && isset($product->promotions->discountType)){
-            $result['percent'] = getPercent($product, $product->promotions->discount);
-            if($product->promotions->discountValue > 0){
-                $result['priceSale'] = getPromotionPrice($product->price, $product->promotions->discount);
+        if(isset($product->promotions)){
+            // Handle both object and array formats
+            $promotion = is_object($product->promotions) ? $product->promotions : (object)($product->promotions ?? []);
+            
+            // Check if promotion has discount (already calculated from findByProduct)
+            if(isset($promotion->discount) && $promotion->discount > 0){
+                $discount = $promotion->discount;
+                $result['percent'] = getPercent($product, $discount);
+                $result['priceSale'] = getPromotionPrice($product->price, $discount);
+            } elseif(isset($promotion->discountType) && isset($promotion->discountValue) && $promotion->discountValue > 0){
+                // Fallback: calculate from discountValue and discountType
+                if($promotion->discountType == 'percent'){
+                    $discount = $product->price * $promotion->discountValue / 100;
+                    if(isset($promotion->maxDiscountValue) && $promotion->maxDiscountValue > 0){
+                        $discount = min($discount, $promotion->maxDiscountValue);
+                    }
+                } else {
+                    $discount = $promotion->discountValue;
+                }
+                if($discount > 0){
+                    $result['percent'] = getPercent($product, $discount);
+                    $result['priceSale'] = getPromotionPrice($product->price, $discount);
+                }
             }
         }
         $result['html'] .= '<div class="price uk-flex uk-flex-middle mt10">';

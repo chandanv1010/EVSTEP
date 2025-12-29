@@ -42,11 +42,11 @@
                                     // Dữ liệu từ paginate có name và canonical trực tiếp từ select (tb2.name, tb2.canonical)
                                     $productName = $product->name ?? '';
                                     $productCanonical = write_url($product->canonical ?? '');
-                                    $productPrice = number_format($product->price ?? 0, 0, ',', '.');
                                     $productRate = $product->rate ?? '';
                                     $totalLesson = $product->total_lesson ?? 0;
                                     $duration = $product->duration ?? 0;
                                     $productImage = $product->image ?? '';
+                                    $productPriceData = getPrice($product);
                                     
                                     // Description phải lấy từ languages relationship (không có trong paginateSelect)
                                     $productDescription = '';
@@ -87,7 +87,15 @@
                                         @if($productDescription)
                                             <div class="course-description">{{ \Illuminate\Support\Str::limit(clean_text($productDescription), 100) }}</div>
                                         @endif
-                                        <div class="course-price">{{ $productPrice }}₫</div>
+                                        <div class="course-price">
+                                            @if($productPriceData['priceSale'] > 0)
+                                                <div class="price-old">{{ number_format($productPriceData['price'], 0, ',', '.') }}₫</div>
+                                                <div class="price-sale">{{ number_format($productPriceData['priceSale'], 0, ',', '.') }}₫</div>
+                                                <div class="price-save">Tiết kiệm: {{ number_format($productPriceData['price'] - $productPriceData['priceSale'], 0, ',', '.') }}₫</div>
+                                            @else
+                                                <div class="price-sale">{{ number_format($productPriceData['price'], 0, ',', '.') }}₫</div>
+                                            @endif
+                                        </div>
                                         <div class="course-buttons">
                                             <a href="{{ $productCanonical }}" class="btn btn-buy">Xem chi tiết</a>
                                             <button type="button" class="btn btn-cart addToCart" data-id="{{ $product->id }}">Mua ngay</button>

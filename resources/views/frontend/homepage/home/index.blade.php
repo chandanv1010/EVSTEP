@@ -337,11 +337,11 @@
                                 $courseName = $courseLanguage->name ?? '';
                                 $courseDescription = $courseLanguage->description ?? '';
                                 $courseCanonical = write_url($courseLanguage->canonical ?? '');
-                                $coursePrice = number_format($course->price ?? 0, 0, ',', '.');
                                 $courseRate = $course->rate ?? '';
                                 $totalLesson = $course->total_lesson ?? 0;
                                 $duration = $course->duration ?? 0;
                                 $courseImage = $course->image ?? '';
+                                $coursePriceData = getPrice($course);
                             @endphp
                                     <div class="swiper-slide">
                             <div class="course-card wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="{{ ($loop->index * 0.1) }}s">
@@ -368,7 +368,15 @@
                                         </div>
                                     </div>
                                     <div class="course-description">{!! $courseDescription !!}</div>
-                                    <div class="course-price">{{ $coursePrice }}₫</div>
+                                    <div class="course-price">
+                                        @if($coursePriceData['priceSale'] > 0)
+                                            <div class="price-old">{{ number_format($coursePriceData['price'], 0, ',', '.') }}₫</div>
+                                            <div class="price-sale">{{ number_format($coursePriceData['priceSale'], 0, ',', '.') }}₫</div>
+                                            <div class="price-save">Tiết kiệm: {{ number_format($coursePriceData['price'] - $coursePriceData['priceSale'], 0, ',', '.') }}₫</div>
+                                        @else
+                                            <div class="price-sale">{{ number_format($coursePriceData['price'], 0, ',', '.') }}₫</div>
+                                        @endif
+                                    </div>
                                     <div class="course-buttons">
                                         <a href="{{ $courseCanonical }}" class="btn btn-buy">Xem chi tiết</a>
                                         <button type="button" class="btn btn-cart addToCart" data-id="{{ $course->id }}">Mua ngay</button>
